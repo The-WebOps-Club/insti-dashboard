@@ -3,7 +3,7 @@
 angular.module('instiDashboard', ['ngAnimate', 'ngCookies',
   'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table'])
 
-  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
+  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,
                     $mdIconProvider) {
     $stateProvider
       .state('login', {
@@ -97,4 +97,5 @@ angular.module('instiDashboard', ['ngAnimate', 'ngCookies',
     });
 
     $mdIconProvider.icon('user', 'assets/images/user.svg', 64);
+    $httpProvider.defaults.withCredentials = true;
   });

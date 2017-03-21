@@ -2,30 +2,50 @@
   'use strict';
 
   angular.module('app')
-          .service('apiService', [
+          .service('api', [
           '$http',
+          '$q',
+          '$log',
           apiService
   ]);
 
-  function apiService($https){
-    var user = {};  
+  function apiService($http, $q, $log){
+    var user = undefined 
     var hostname = "dashboard.webops.club";
     var scheme = 'https';
     var endpoints = {
-        'auth': scheme + '://auth' + hostname,
-        'data': scheme + '://data' + hostname,
+        'auth': scheme + '://auth.' + hostname,
+        'data': scheme + '://data.' + hostname,
     }
 
     return {
-      isLoggedIn: function() {
-        return user.isLoggedIn;
+      isSignedIn: function() {
+        var deferred = $q.defer();
+        if (user) {  
+            deferred.resolve(user);
+        } else {
+            $http.get(endpoints.auth + '/user/account/info').then(function(data){
+                user = data;
+                deferred.resolve(data);
+            }).catch(function(msg){
+                deferred.reject(msg);
+                $log.error(msg);
+            });
+        }
+        return deferred.promise;
       },
       login: function(username, password) {
-        $http.post(endpoints.auth, {username: username, password: password}).then(
+        var deferred = $q.defer();
+        $http.post(endpoints.auth + '/login', {username: username, password: password}).then(
             function(data) {
                 console.log(data);
+                deferred.resolve(data);
             }
-        )
+        ).catch(function(msg){
+            deferred.reject(msg);
+            $log.error(msg);
+        });
+        return deferred.promise;
       }
     };
   }

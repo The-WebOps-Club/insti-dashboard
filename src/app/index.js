@@ -1,11 +1,17 @@
 'use strict';
 
-angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies',
+angular.module('instiDashboard', ['ngAnimate', 'ngCookies',
   'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table'])
 
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
                     $mdIconProvider) {
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+      })
       .state('home', {
         url: '',
         templateUrl: 'app/views/main.html',
@@ -49,7 +55,7 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies',
         }
       });
 
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/login');
 
     $mdThemingProvider
       .theme('default')

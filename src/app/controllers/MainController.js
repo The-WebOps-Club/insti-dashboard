@@ -3,12 +3,21 @@
   angular
        .module('app')
        .controller('MainController', [
-          'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', '$mdToast',
+          'navService', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$state', '$mdToast', 'api', '$state',
           MainController
        ]);
 
-  function MainController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state, $mdToast) {
+  function MainController(navService, $mdSidenav, $mdBottomSheet, $log, $q, $state, $mdToast, api, $state) {
     var vm = this;
+
+    vm.logout= function() {
+        $log.info('logout');
+        api.logout().then(function(data){
+            $state.go('login');
+        }).catch(function(error){
+            showSimpleToast(error);
+        })
+    };
 
     vm.menuItems = [ ];
     vm.selectItem = selectItem;

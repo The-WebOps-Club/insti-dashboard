@@ -24,12 +24,12 @@
         if (user) {  
             deferred.resolve(user);
         } else {
-            $http.get(endpoints.auth + '/user/account/info').then(function(data){
-                user = data;
-                deferred.resolve(data);
-            }).catch(function(msg){
-                deferred.reject(msg);
-                $log.error(msg);
+            $http.get(endpoints.auth + '/user/account/info').then(function(response){
+                user = response.data;
+                deferred.resolve(response.data);
+            }).catch(function(response){
+                deferred.reject(response.data.message);
+                $log.error(response);
             });
         }
         return deferred.promise;
@@ -37,13 +37,28 @@
       login: function(username, password) {
         var deferred = $q.defer();
         $http.post(endpoints.auth + '/login', {username: username, password: password}).then(
-            function(data) {
-                console.log(data);
-                deferred.resolve(data);
+            function(response) {
+				user = response.data;
+                console.log(response.data);
+                deferred.resolve(response.data);
             }
-        ).catch(function(msg){
-            deferred.reject(msg);
-            $log.error(msg);
+        ).catch(function(response){
+            deferred.reject(response.data.message);
+            $log.error('from service', response);
+        });
+        return deferred.promise;
+      },
+      logout: function() {
+        var deferred = $q.defer();
+        $http.get(endpoints.auth + '/user/logout').then(
+            function(response) {
+                $log.info(response.data);
+				user = undefined;
+                deferred.resolve(response.data);
+            }
+        ).catch(function(response){
+            deferred.reject(response.data.message);
+            $log.error('from service', response);
         });
         return deferred.promise;
       }

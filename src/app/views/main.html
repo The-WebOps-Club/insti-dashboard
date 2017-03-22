@@ -39,10 +39,26 @@
                 <i class="material-icons">notifications</i>
                 <span class="notifications-label">7</span>
             </md-button>
-            <!--
-            <md-button class="toolbar-button" aria-label="Settings" ng-click="vm.toggleRightSidebar()">
-                <i class="material-icons">menu</i>
-            </md-button>-->
+            
+			<md-menu>
+				<md-button class="toolbar-button" aria-label="Settings" ng-click="$mdMenu.open($event)">
+					<i class="material-icons">more_vert</i>
+				</md-button>
+				<md-menu-content width="4">
+					<md-menu-item>
+						<md-button ng-click="vm.logout()">
+                			<i class="material-icons">exit_to_app</i>
+							Logout	
+						</md-button>
+					</md-menu-item>
+					<md-menu-item>
+						<md-button disabled="disabled" ng-click="">
+                			<i class="material-icons">voicemail</i>
+							Check voicemail
+						</md-button>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
         </section>
     </md-toolbar>
 

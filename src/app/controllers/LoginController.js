@@ -20,13 +20,15 @@
     });  
 	$scope.username = '';
 	$scope.password = '';
-
+    $scope.loginText = 'Login';
 
 	$scope.doLogin = function() {
         api.login($scope.username, $scope.password).then(function(data){
             $log.info(data);
-        }).catch(function(error){
-            $log.error(error);
+            $state.go('home.dashboard');
+        }).catch(function(message) {
+            $scope.loginText = message;
+            $log.error(status, message);
         });
 	}
   }

@@ -16,7 +16,8 @@
     "angular-material": "^1.0.6",
     "angular-mocks": "^1.5.0",
     "angular-material-data-table": "^0.10.10",
-    "angular-gridster": "^0.13.15"
+    "angular-gridster": "^0.13.15",
+    "angular-loading-bar": "^0.9.0"
   },
   "devDependencies": {}
 }

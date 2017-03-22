@@ -1,22 +1,54 @@
-# insti-dashboard
-Dashboard for all insti related activities
+# Angular Material Dashboard
+
+[![Join the chat at https://gitter.im/flatlogic/angular-material-dashboard](https://badges.gitter.im/flatlogic/angular-material-dashboard.svg)](https://gitter.im/flatlogic/angular-material-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+Responsive Angular admin dashboard with material design based on
+[Angular Material](https://github.com/angular/material).
+
+![promo-amd](src/assets/images/promo-amd.png)
+
+Check out [DEMO](http://flatlogic.github.io/angular-material-dashboard/)
 
 ## Getting started
 
-### Installations
- - Install `nvm` from [here](https://github.com/creationix/nvm)
- - Install the latest **NodeJS** version by executing `nvm install node`
- - Install `bower`, `gulp`, `gulp-cli` by executing `npm install -g bower gulp gulp-cli`
+Clone project:
 
-### Running the app
- - Clone the repository
- - Then `cd` into the directory and execute `npm install` to install dependencies
- - Run the development web-server by executing `gulp serve`
+    $ git clone https://github.com/flatlogic/angular-material-dashboard.git
 
-## Dashboard template
-The dashboard template is taken from [angular-material-dashboard](https://github.com/flatlogic/angular-material-dashboard)
+Install dependencies:
 
-## Guidelines for contribution
- - Fork the repository and issue pull requests
- - Please check the existing issues before posting any new issue to avoid repetition
- - When installing a new package using `npm` or `bower`, use `--save` flag, for example, `npm install --save <package_name>` or `bower install --save <package_name>`
+    $ cd angular-material-dashboard
+    $ npm install
+    
+Run development web-server:
+
+    $ gulp serve
+
+## Features
+
+* AngularJS
+* Angular UI Router
+* Angular Material
+* Sass styles
+* Gulp build
+* Stylish, clean, responsive layout with original design
+* BrowserSync for the ease of development
+
+## Project structure and credits
+
+Project structure based on [gulp-angular yeoman generator](https://github.com/Swiip/generator-gulp-angular).
+If you have any questions about the build or project structure please check out their documentation.
+
+UI components built with [Angular Material](https://material.angularjs.org/).
+
+Design by [flatlogic.com](http://flatlogic.com/)
+
+## Deploy to Github pages  
+  
+    $ gulp build
+    $ gulp deploy
+
+## Community
+- [Tweet about it](https://twitter.com/intent/tweet?text=Angular%20Material%20Dashboard%20https://github.com/flatlogic/angular-material-dashboard%20via%20@flatlogicinc) to support revolution in classic paid templates market.
+- Follow [@flatlogicinc on Twitter](https://twitter.com/flatlogicinc).
+- Subscribe to Flatlogic newsletter at [flatlogic.com](http://flatlogic.com/)

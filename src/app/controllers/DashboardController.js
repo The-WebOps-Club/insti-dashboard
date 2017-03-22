@@ -23,7 +23,7 @@
 			minSizeY: 1, // minumum row height of an item
 			maxSizeY: null, // maximum row height of an item
 			resizable: {
-				enabled: false
+				enabled: true 
 			} 
 		};
 

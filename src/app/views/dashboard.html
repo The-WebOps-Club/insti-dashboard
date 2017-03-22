@@ -21,6 +21,29 @@
 
 	</div>
 
+	<div gridster-item ng-controller="EventCtrl" layout="column" ng-cloak row=0 col=0 size-x=2 size-y=2 >
+		<md-toolbar class="md-warn">
+			<div class="md-toolbar-tools">
+				<h2 class="md-flex">Events</h2>
+			</div>
+		</md-toolbar>
+
+		<md-content flex layout-padding>
+            <md-listi flex>
+                <md-list-item class="md-2-line" ng-repeat="item in events">
+          			<img src="https://material.angularjs.org/latest/img/list/60.jpeg" class="md-avatar" alt="{{item.who}}" />
+					
+					<div class="md-list-item-text" layout="column">
+						<h3>{{ item.who }}</h3>
+						<h4>{{ item.what }}</h4>
+						<p>{{ item.notes }}</p>
+					</div>
+				</md-list-item>
+            </md-list>
+		</md-content>
+
+	</div>
+
 	<div gridster-item="weatherGrid" ng-controller="WeatherCtrl" layout="column" ng-cloak>
 		<md-toolbar class="md-warn">
 			<div class="md-toolbar-tools">

@@ -1,7 +1,14 @@
 (function(){
   'use strict';
 
-  angular.module('app', [ 'ngMaterial', 'gridster', 'angular-loading-bar', 'weatherApp', 'announcementApp' ]).run([
+  angular.module('app', [ 
+          'ngMaterial', 
+          'gridster', 
+          'angular-loading-bar', 
+          'weatherApp', 
+          'announcementApp',
+          'eventApp',
+  ]).run([
     '$state', 'api', function($state, api) {
         api.isSignedIn().then(function(data){
         

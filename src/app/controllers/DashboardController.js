@@ -23,6 +23,11 @@
       { sizeX: 1, sizeY: 1, row: 2, col: 3 },
       { sizeX: 1, sizeY: 1, row: 2, col: 4 }
     ];
+
+    $scope.announcement = {
+        sizeX: 2,
+        sizeY: 2
+    };
     
   }
 

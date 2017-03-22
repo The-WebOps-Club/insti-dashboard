@@ -9,11 +9,13 @@
 				<md-content class="md-padding" layout="column">
 					<md-input-container>
 						<label>username</label>
-						<input type="text" ng-model="username"/>
+						<input type="text" ng-model="username"
+                        ng-keypress="($event.charCode==13)? doLogin() : return"/>
 					</md-input-container>
 					<md-input-container>
 						<label>password</label>
-						<input type="password" ng-model="password"/>
+						<input type="password" ng-model="password"
+                        ng-keypress="($event.charCode==13)? doLogin() : return"/>
 					</md-input-container>
 					<div layout="row" layout-align="center center" style="padding-top:20px">
 						<md-button flex class="md-raised md-primary" ng-click="doLogin()">{{loginText}}</md-button>

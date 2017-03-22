@@ -1,7 +1,7 @@
 
-<div gridster>
+<div gridster="gridsterOpts">
 	<ul>
-		<li gridster-item="item">
+		<li gridster-item="weatherGrid">
 			<div ng-controller="WeatherCtrl">
 				<h2>Weather in Chennai, India</h2>
 				<weather-icon cloudiness="{{ weather.clouds }}"></weather-icon>
@@ -13,7 +13,10 @@
 			</div> 
 		</li>
 
-		<li gridster-item="item" ng-repeat="item in standardItems"></li>
+    <li gridster-item="item">
+      <iframe src="https://hospital.iitm.ac.in/" style="position: absolute;width: 90%;height: 90%"></iframe>
+    </li>
+
 	</ul>
 </div>
 

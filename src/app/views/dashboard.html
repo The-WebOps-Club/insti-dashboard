@@ -1,6 +1,6 @@
 
 <div gridster="gridsterOpts">
-	<div gridster-item="announcement" ng-controller="AnnouncementCtrl" layout="column" ng-cloak>
+	<div gridster-item ng-controller="AnnouncementCtrl" layout="column" ng-cloak row=0 col=0 size-x=2 size-y=2 >
 		<md-toolbar class="md-warn">
 			<div class="md-toolbar-tools">
 				<h2 class="md-flex">Announcements</h2>
@@ -8,19 +8,15 @@
 		</md-toolbar>
 
 		<md-content flex layout-padding>
-			<p>Lorem ipsum dolor sit amet, ne quod novum mei. Sea omnium invenire mediocrem at, in lobortis conclusionemque nam. Ne deleniti appetere reprimique pro, inani labitur disputationi te sed. At vix sale omnesque, id pro labitur reformidans accommodare, cum labores honestatis eu. Nec quem lucilius in, eam praesent reformidans no. Sed laudem aliquam ne.</p>
-			Qui utamur tacimates quaestio ad, quod graece omnium ius ut. Pri ut vero debitis interpretaris, qui cu mentitum adipiscing disputationi. Voluptatum mediocritatem quo ut. Fabulas dolorem ei has, quem molestie persequeris et sit.
-			</p>
-
-			<p>
-			Est in vivendum comprehensam conclusionemque, alia cetero iriure no usu, te cibo deterruisset pro. Ludus epicurei quo id, ex cum iudicabit intellegebat. Ex modo deseruisse quo, mel noster menandri sententiae ea, duo et tritani malorum recteque. Nullam suscipit partiendo nec id, indoctum vulputate per ex. Et has enim habemus tibique. Cu latine electram cum, ridens propriae intellegat eu mea.
-			</p>
-
-			<p>
-			Duo at aliquid mnesarchum, nec ne impetus hendrerit. Ius id aeterno debitis atomorum, et sed feugait voluptua, brute tibique no vix. Eos modo esse ex, ei omittam imperdiet pro. Vel assum albucius incorrupte no. Vim viris prompta repudiare ne, vel ut viderer scripserit, dicant appetere argumentum mel ea. Eripuit feugait tincidunt pri ne, cu facilisi molestiae usu.
-			</p>
-
-
+            <md-list>
+                <md-list-item class="md-2-line" ng-repeat="item in announcements">
+                    <md-checkbox ng-model="item.done"></md-checkbox>
+                    <div class="md-list-item-text">
+                        <h3>{{item.title}}</h3>
+                        <p>{{item.description}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
 		</md-content>
 
 	</div>

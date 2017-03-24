@@ -1,0 +1,20 @@
+<div class="row mail-client-container transparent">
+  <div class="col-md-12">
+    <div ba-panel ba-panel-class="xmedium-panel mail-panel">
+      <div class="letter-layout">
+        <div style="overflow: scroll" class="mail-navigation-container" ng-class="{'expanded' : !vm.navigationCollapsed}">
+          <div class="text-center">
+            <button type="button" class="btn btn-default compose-button" ng-click="vm.showCompose('','','')">
+              New
+            </button>
+          </div>
+          <div ng-repeat="t in vm.conversations" ui-sref-active="active" class="mail-navigation"
+               ui-sref="chat.conversation({id: t.id})" ng-click="selectTab(t.id)">
+            {{t.label}}<span class="new-mails" ng-show="t.newMessages">{{t.newMessages}}</span>
+          </div>
+        </div>
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
+</div>

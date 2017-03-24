@@ -1,22 +1,18 @@
-(function(){
-  'use strict';
+'use strict';
 
-  angular.module('app', [
-          'ngMaterial',
-          'gridster',
-          'angular-loading-bar',
-          'weatherApp',
-          'announcementApp',
-          'eventApp',
-          'widgetGrid'
-  ]).run([
-    '$state', 'api', function($state, api) {
-        api.isSignedIn().then(function(data){
+angular.module('BlurAdmin', [
+  'ngAnimate',
+  'ui.bootstrap',
+  'ui.sortable',
+  'ui.router',
+  'ngTouch',
+  'toastr',
+  'smart-table',
+  "xeditable",
+  'ui.slimscroll',
+  'ngJsTree',
+  'angular-progress-button-styles',
 
-        }).catch(function(error){
-            $state.go('login');
-        });
-    }
-  ]);
-
-})();
+  'BlurAdmin.theme',
+  'BlurAdmin.pages'
+]);

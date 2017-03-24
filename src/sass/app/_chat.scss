@@ -286,7 +286,7 @@
   /* T Y P E */
 
   input.textarea {
-      position: fixed;
+      position: relative;
       bottom: 0px;
       left: 0px;
       right: 0px;
@@ -302,7 +302,7 @@
       font-weight: 400;
   }
   .emojis {
-      position: fixed;
+      position: relative;
       display: block;
       bottom: 8px;
       left: 7px;

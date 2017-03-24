@@ -1,0 +1,46 @@
+<div ng-controller="WidgetCtrl as demo">
+
+
+          <button title="Add a Widget" class="demo-btn demo-btn-add-widget",
+                  ng-show="demo.editable"
+                  ng-class="{ inactive: !demo.additionPossible }"
+                  ng-click="demo.addWidget()"
+                  ng-mouseenter="demo.options.highlightNextPosition = true"
+                  ng-mouseleave="demo.options.highlightNextPosition = false">
+            Add Widget
+          </button>
+
+          <button ng-click="demo.toggleEditable()" class="demo-btn demo-btn-edit" ng-class="{ editing: demo.editable }">
+            {{ demo.editable ? "Done" : "Edit" }}
+          </button>
+
+      <wg-grid columns="{{demo.columns}}" rows="{{demo.rows}}" options="demo.options" class="demo-grid" id="demo-grid">
+        <wg-widget wg-resizable wg-movable editable="{{demo.editable}}" ng-repeat="widget in demo.greetingWidgets" position="widget.position">
+          <div random-bg-color >
+            <button title="Remove Widget" class="demo-btn demo-btn-remove-widget" ng-show="demo.editable" ng-click="demo.removeWidget(widget)">&#x2715;</button>
+            <p class="demo-greeting">{{widget.text}}</p>
+          </div>
+        </wg-widget>
+        <!-- <wg-widget wg-resizable wg-movable editable="{{demo.editable}}" position="{ top: 10, left: 1, width: 8, height: 5 }">
+          <youtube id="9rbRwV0T0AQ"/>
+        </wg-widget> -->
+      </wg-grid>
+
+      <div ng-hide="demo.editable" class="demo-grid-dimensions">{{demo.gridWidth}} x {{demo.gridHeight}}</div>
+    </div>
+    <!-- suppress iOS' rubber band effect -->
+    <!-- c.f. http://stackoverflow.com/a/26853900 -->
+    <script>
+    var firstMove;
+
+    window.addEventListener('touchstart', function (e) {
+      firstMove = true;
+    });
+
+    window.addEventListener('touchmove', function (e) {
+      if (firstMove) {
+        e.preventDefault();
+        firstMove = false;
+      }
+    });
+    </script>

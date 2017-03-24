@@ -22,9 +22,17 @@ angular.module('instiDashboard', ['ngAnimate', 'ngCookies',
       .state('home.dashboard', {
         url: '/dashboard',
         templateUrl: 'app/views/dashboard.html',
-		controller: 'DashboardCtrl',
+		    controller: 'DashboardCtrl',
         data: {
           title: 'Dashboard'
+        }
+      })
+      .state('home.widgets', {
+        url: '/widgets',
+        templateUrl: 'app/views/widgets.html',
+		    controller: 'WidgetCtrl',
+        data: {
+          title: 'Widgets'
         }
       })
       .state('home.profile', {

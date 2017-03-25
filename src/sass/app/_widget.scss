@@ -7,6 +7,16 @@
   }
 }
 
+.fixed-elem {
+	ul.nav.nav-tabs {
+		position: absolute;
+		width: 100%;
+	}
+	div.tab-content {
+		padding-top: 55px;
+	}
+}
+
 div.gridster-item {
   div.panel-heading {
     cursor: move;

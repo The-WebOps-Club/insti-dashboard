@@ -18,9 +18,19 @@ angular.module('BlurAdmin', [
   'BlurAdmin.pages',
   'BlurAdmin.components'
 ])
-.config(function($sceDelegateProvider){
+.config(function($sceDelegateProvider, $httpProvider){
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://hospital.iitm.ac.in/**'
   ]);
-});
+  $httpProvider.defaults.withCredentials = true;
+})
+.run([
+    '$state', 'api', '$location', function($state, api, $location) {
+        api.isSignedIn().then(function(data){
+          console.log('Logged in', data);
+        }).catch(function(error){
+            $location.path('/auth.html');
+        });
+    }
+  ]);

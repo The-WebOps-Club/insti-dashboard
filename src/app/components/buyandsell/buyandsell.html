@@ -1,0 +1,15 @@
+<uib-tabset>
+  <uib-tab heading="Buy">
+    <uib-accordion ng-repeat="items in records">
+		<uib-accordion-group heading="{{items.product}}" panel-class="bootstrap-panel accordion-panel">
+			<h3>Name : {{items.name}}</h3>
+			<h3>Price : {{items.price}}</h3>
+		    <p>{{items.description}}</p>
+		    <button type="button" class="btn btn-primary btn-sm">Buy</button>
+		</uib-accordion-group>
+	</uib-accordion>
+  </uib-tab>
+  <uib-tab heading="Sell">
+    Sell
+  </uib-tab>
+</uib-tabset>

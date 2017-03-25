@@ -21,7 +21,8 @@
             order: 0,
             icon: 'ion-android-chat'
           }
-        }).state('chat.conversation', {
+        })
+        .state('chat.conversation', {
           url: '/:id',
           templateUrl: 'app/pages/chat/conversation/conversation-new.html',
           title: 'Chat',

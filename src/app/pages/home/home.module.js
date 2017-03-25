@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.home', [])
+  angular.module('BlurAdmin.pages.home', ['gridster'])
       .config(routeConfig);
 
   /** @ngInject */
@@ -14,6 +14,8 @@
         .state('home', {
           url: '/home',
           templateUrl: 'app/pages/home/home.html',
+          controller: "HomeCtrl",
+          controllerAs: "homeCtrl",          
           title: 'Home',
           sidebarMeta: {
             icon: 'ion-android-home',

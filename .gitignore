@@ -6,3 +6,4 @@ dist/
 .idea/
 .publish/
 *.swp
+.DS_Store

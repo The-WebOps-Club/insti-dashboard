@@ -1,25 +1,35 @@
-<div class="row shift-up">
-  <div class="col-xlg-3 col-lg-6 col-md-6 col-xs-12"
-       ba-panel
-       ba-panel-title="To Do List"
-       ba-panel-class="xmedium-panel feed-comply-panel with-scroll todo-panel">
-    <dashboard-todo></dashboard-todo>
-  </div>
-  <div class="col-xlg-6 col-lg-6 col-md-6 col-xs-12"
-       ba-panel
-       ba-panel-title="Calendar"
-       ba-panel-class="xmedium-panel feed-comply-panel with-scroll calendar-panel">
-    <dashboard-calendar></dashboard-calendar>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-4 col-sm-6 col-xs-12">
-    <div ba-panel ba-panel-title="Weather" ba-panel-class="medium-panel with-scroll">
-      <blur-weather forecast="5"></blur-weather>
+<div gridster="gridsterOpts">
+    <div gridster-item="gridsterTodo"
+         ba-panel
+         ba-panel-title="To Do List"
+         ba-panel-class="feed-comply-panel with-scroll todo-panel">
+      <dashboard-todo></dashboard-todo>
     </div>
+    <div gridster-item="gridsterCalendar"
+         ba-panel
+         ba-panel-title="Calendar"
+         ba-panel-class="feed-comply-panel with-scroll calendar-panel">
+      <dashboard-calendar></dashboard-calendar>
+    </div>
+
+    <div gridster-item="gridsterWeather"
+         ba-panel
+         ba-panel-title="Weather"
+         ba-panel-class="feed-comply-panel with-scroll">
+      <weather forecast="5"></weather>
+    </div>
+
+  <iframe-widget gridsterData="gridsterHospital" title="Institute Hospital" url="http://hospital.iitm.ac.in"></iframe-widget>
+
+  <div gridster-item="gridsterShareacab"
+       ba-panel
+       ba-panel-title="Share A Cab"
+       ba-panel-class="xmedium-panel with-scroll"
+       class="widget">
+      <share-a-cab data="{name: 'generic'}"></share-a-cab>
   </div>
 
+<<<<<<< HEAD
   <div class="col-lg-4 col-sm-6 col-xs-12">
     <div ba-panel ba-panel-title="Buy & Sell" ba-panel-class="medium-panel with-scroll">
       <buy-sell></buy-sell>
@@ -27,3 +37,7 @@
   </div>
 </div>
 <iframe-widget title="hahaha" url="https://hospital.iitm.ac.in"></iframe-widget>
+=======
+
+</div>
+>>>>>>> upstream/master

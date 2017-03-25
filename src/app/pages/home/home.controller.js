@@ -24,37 +24,34 @@
       minSizeY: 1, // minumum row height of an item
       maxSizeY: null, // maximum row height of an item
       resizable: {
-        enabled: true 
-      } 
+        enabled: true
+      }
     };
 
     $scope.gridsterTodo = {
-      sizeX: 3, 
-      sizeY: 3, 
-      row: 0, 
-      col: 0
+      sizeX: 3,
+      sizeY: 2,
     };
 
     $scope.gridsterCalendar = {
-      sizeX: 3, 
-      sizeY: 3, 
-      row: 0, 
-      col: 3
+      sizeX: 3,
+      sizeY: 2,
     };
 
     $scope.gridsterWeather = {
-      sizeX: 3, 
-      sizeY: 2, 
-      row: 3, 
-      col: 0
+      sizeX: 3,
+      sizeY: 2,
     };
 
     $scope.gridsterHospital = {
-      sizeX: 4,
-      sizeY: 0,
-      row: 6,
-      col: 3
+      sizeX: 3,
+      sizeY: 1
     };
+
+    $scope.gridsterShareacab = {
+      sizeX: 3,
+      sizeY: 1
+    }
 
   }
 

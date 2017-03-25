@@ -55,8 +55,13 @@
 
     $scope.gridsterShareacab = {
       sizeX: 3,
-      sizeY: 1
-    }
+      sizeY: 2
+    };
+
+    $scope.gridsterBuynSell = {
+      sizeX: 3,
+      sizeY: 2
+    };
 
   }
 

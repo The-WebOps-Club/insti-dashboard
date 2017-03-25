@@ -16,3 +16,9 @@
 		padding-top: 55px;
 	}
 }
+
+div.gridster-item {
+  div.panel-heading {
+    cursor: move;
+  }
+}

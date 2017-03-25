@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-	angular.module('BlurAdmin.pages.components', [])
+	angular.module('BlurAdmin.components')
 			.directive('iframeWidget', function(){
 				return {
 			 		restrict: 'E',
@@ -10,7 +10,7 @@
 			 			url: '@url',
 			 			gridsterData: '@gridsterData'
 			 		},
-			    	templateUrl: 'app/pages/components/iframeWidget/iframeWidget.html'
+			    	templateUrl: 'app/components/iframeWidget/iframeWidget.html'
 			  	};
 			});
 

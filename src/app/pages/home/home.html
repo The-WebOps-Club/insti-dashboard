@@ -13,15 +13,24 @@
       <dashboard-calendar></dashboard-calendar>
     </div>
   </div>
-  
+
   <div>
     <div gridster-item="gridsterWeather"
-         ba-panel 
-         ba-panel-title="Weather" 
+         ba-panel
+         ba-panel-title="Weather"
          ba-panel-class="medium-panel with-scroll">
       <blur-weather forecast="5"></blur-weather>
     </div>
   </div>
 
   <iframe-widget gridsterData="gridsterHospital" title="Institute Hospital" url="http://hospital.iitm.ac.in"></iframe-widget>
+
+  <div gridster-item="item"
+       ba-panel
+  		 ba-panel-title="Hello"
+  		 ba-panel-class="xmedium-panel with-scroll">
+  	  <generic-widget data="{name: 'generic'}"></generic-widget>
+  </div>
+
+
 </div>

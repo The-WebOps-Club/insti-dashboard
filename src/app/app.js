@@ -15,11 +15,12 @@ angular.module('BlurAdmin', [
   'gridster',
 
   'BlurAdmin.theme',
-  'BlurAdmin.pages'
+  'BlurAdmin.pages',
+  'BlurAdmin.components'
 ])
 .config(function($sceDelegateProvider){
   $sceDelegateProvider.resourceUrlWhitelist([
-    'self', 
+    'self',
     'http://hospital.iitm.ac.in/**'
   ]);
 });

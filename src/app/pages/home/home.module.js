@@ -14,8 +14,7 @@
         .state('home', {
           url: '/home',
           templateUrl: 'app/pages/home/home.html',
-          controller: "HomeCtrl",
-          controllerAs: "homeCtrl",          
+          controller: "HomeCtrl",        
           title: 'Home',
           sidebarMeta: {
             icon: 'ion-android-home',

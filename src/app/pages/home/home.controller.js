@@ -44,14 +44,14 @@
 
     $scope.gridsterWeather = {
       sizeX: 3, 
-      sizeY: 3, 
+      sizeY: 2, 
       row: 3, 
       col: 0
     };
 
     $scope.gridsterHospital = {
       sizeX: 4,
-      sizeY: 4,
+      sizeY: 0,
       row: 6,
       col: 3
     };

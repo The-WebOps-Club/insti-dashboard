@@ -102,3 +102,18 @@ $modal-input-border: #e7e7e7;
     text-align: center;
   }
 }
+
+.non-blocking-backdrop {
+  position: relative !important;
+  background-color: none !important;
+  z-index: auto !important;
+  opacity: 0;
+}
+
+.non-blocking-modal {
+  top: auto !important;
+}
+
+.non-blocking-modal-body {
+  overflow: scroll !important;
+}

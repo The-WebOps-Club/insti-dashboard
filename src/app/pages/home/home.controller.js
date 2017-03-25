@@ -37,21 +37,21 @@
 
     $scope.gridsterCalendar = {
       sizeX: 3, 
-      sizeY: 6, 
+      sizeY: 3, 
       row: 0, 
       col: 3
     };
 
     $scope.gridsterWeather = {
       sizeX: 3, 
-      sizeY: 6, 
+      sizeY: 3, 
       row: 3, 
       col: 0
     };
 
     $scope.gridsterHospital = {
-      sizeX: 3,
-      sizeY: 6,
+      sizeX: 4,
+      sizeY: 4,
       row: 6,
       col: 3
     };

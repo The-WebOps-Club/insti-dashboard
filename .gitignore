@@ -7,3 +7,4 @@ dist/
 .publish/
 *.swp
 .DS_Store
+release

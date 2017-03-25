@@ -21,7 +21,8 @@ angular.module('BlurAdmin', [
 .config(function($sceDelegateProvider, $httpProvider){
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'http://hospital.iitm.ac.in/**'
+    'http://hospital.iitm.ac.in/**',
+    'https://students.iitm.ac.in/**'
   ]);
   $httpProvider.defaults.withCredentials = true;
 })

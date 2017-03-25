@@ -26,11 +26,11 @@ angular.module('BlurAdmin', [
   $httpProvider.defaults.withCredentials = true;
 })
 .run([
-    '$state', 'api', '$location', function($state, api, $location) {
+    '$state', 'api', '$window', function($state, api, $window) {
         api.isSignedIn().then(function(data){
           console.log('Logged in', data);
         }).catch(function(error){
-            $location.path('/auth.html');
+            $window.location.href = '/auth.html';
         });
     }
   ]);

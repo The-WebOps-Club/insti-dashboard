@@ -10,7 +10,7 @@
 			 			url: '@url',
 			 			gridsterData: '@gridsterData'
 			 		},
-			    	templateUrl: 'app/pages/components/iframe-widget/iframe.html'
+			    	templateUrl: 'app/pages/components/iframeWidget/iframeWidget.html'
 			  	};
 			});
 

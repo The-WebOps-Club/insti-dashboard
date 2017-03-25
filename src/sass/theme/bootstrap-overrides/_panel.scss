@@ -28,6 +28,9 @@ $panel-heading-font-size: 16px;
   &.large-panel {
     height: $large-panel-height;
   }
+  &.full-height-panel {
+    height: 100%;
+  }
   &.viewport100 {
     height: calc(100vh - 218px);
   }

@@ -30,35 +30,27 @@
 
     $scope.gridsterTodo = {
       sizeX: 3,
-      sizeY: 3,
-      row: 0,
-      col: 0
+      sizeY: 2,
     };
 
     $scope.gridsterCalendar = {
       sizeX: 3,
-      sizeY: 3,
-      row: 0,
-      col: 3
+      sizeY: 2,
     };
 
     $scope.gridsterWeather = {
       sizeX: 3,
       sizeY: 2,
-      row: 3,
-      col: 0
     };
 
     $scope.gridsterHospital = {
-      sizeX: 4,
-      sizeY: 0,
-      row: 6,
-      col: 3
+      sizeX: 3,
+      sizeY: 1
     };
 
     $scope.gridsterShareacab = {
-      sizeX: 2,
-      sizeY: 3
+      sizeX: 3,
+      sizeY: 1
     }
 
   }

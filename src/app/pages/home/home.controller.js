@@ -33,6 +33,11 @@
       sizeY: 2,
     };
 
+    $scope.gridsterAnnouncements = {
+      sizeX: 2,
+      sizeY: 2,
+    };
+
     $scope.gridsterCalendar = {
       sizeX: 3,
       sizeY: 2,

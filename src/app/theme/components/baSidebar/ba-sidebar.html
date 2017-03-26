@@ -5,7 +5,11 @@
         ng-class="::{'with-sub-menu': item.subMenu}" ui-sref-active="selected"
         ba-sidebar-toggling-item="item">
 
-      <a ng-mouseenter="hoverItem($event, item)" ui-state="item.stateRef || ''" ng-href="{{::(item.fixedHref ? item.fixedHref: '')}}" ng-if="::!item.subMenu" class="al-sidebar-list-link">
+      <a ng-mouseenter="hoverItem($event, item)" ui-state="item.stateRef || ''" ng-href="{{::(item.fixedHref ? item.fixedHref: '')}}" ng-if="::!item.subMenu && !item.external" class="al-sidebar-list-link">
+        <i class="{{ ::item.icon }}"></i><span>{{ ::item.title }}</span>
+      </a>
+
+      <a ng-mouseenter="hoverItem($event, item)" ng-href="{{::(item.fixedHref ? item.fixedHref: '')}}" target="_blank" ng-if="::!item.subMenu && item.external" class="al-sidebar-list-link">
         <i class="{{ ::item.icon }}"></i><span>{{ ::item.title }}</span>
       </a>
 

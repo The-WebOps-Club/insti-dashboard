@@ -8,3 +8,4 @@ dist/
 *.swp
 .DS_Store
 release
+*~

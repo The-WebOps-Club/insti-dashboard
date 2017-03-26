@@ -11,6 +11,7 @@
 	ul.nav.nav-tabs {
 		position: absolute;
 		width: 100%;
+    z-index: 5;
 	}
 	div.tab-content {
 		padding-top: 55px;

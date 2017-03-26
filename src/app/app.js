@@ -12,7 +12,6 @@ angular.module('BlurAdmin', [
   'ui.slimscroll',
   'ngJsTree',
   'angular-progress-button-styles',
-  'gridster',
 
   'BlurAdmin.theme',
   'BlurAdmin.pages',
@@ -22,6 +21,7 @@ angular.module('BlurAdmin', [
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://hospital.iitm.ac.in/**',
+    'https://students.iitm.ac.in:444/**',
     'https://students.iitm.ac.in/**'
   ]);
   $httpProvider.defaults.withCredentials = true;

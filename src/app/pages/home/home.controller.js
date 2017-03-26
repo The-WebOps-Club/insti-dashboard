@@ -18,7 +18,7 @@
         handle: 'div.panel-heading'
       },
       defaultSizeX: 2, // the default width of a gridster item, if not specifed
-      defaultSizeY: 1, // the default height of a gridster item, if not specified
+      defaultSizeY: 2, // the default height of a gridster item, if not specified
       minSizeX: 1, // minimum column width of an item
       maxSizeX: null, // maximum column width of an item
       minSizeY: 1, // minumum row height of an item
@@ -29,7 +29,7 @@
     };
 
     $scope.gridsterTodo = {
-      sizeX: 3,
+      sizeX: 2,
       sizeY: 2,
     };
 
@@ -48,28 +48,28 @@
     };
 
     $scope.gridsterWeather = {
-      sizeX: 3,
-      sizeY: 2,
+      sizeX: 1,
+      sizeY: 1,
     };
 
-    $scope.gridsterHospital = {
-      sizeX: 3,
-      sizeY: 4
+    $scope.gridsterStudents = {
+      sizeX: 2,
+      sizeY: 2
     };
 
     $scope.gridsterShareacab = {
-      sizeX: 3,
+      sizeX: 2,
       sizeY: 2
     };
 
     $scope.gridsterBuynSell = {
-      sizeX: 3,
+      sizeX: 2,
       sizeY: 2
     };
 
     $scope.gridsterLostnfound = {
-      sizeX: 3,
-      sizeY: 3
+      sizeX: 2,
+      sizeY: 2
     }
 
   }

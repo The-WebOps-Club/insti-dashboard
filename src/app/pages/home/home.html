@@ -35,7 +35,15 @@
 
     </div>
 
-  <iframe-widget gridsterData="gridsterHospital" title="SLC" url="https://students.iitm.ac.in/"></iframe-widget>
+    <div gridster-item="gridsterStudents"
+    		 ba-panel
+    		 ba-panel-title="Students"
+    		 ba-panel-class="full-height-panel feed-comply-panel with-scroll"
+    		 class="widget">
+         <iframe-widget url="https://students.iitm.ac.in/home/"></iframe-widget>
+    </div>
+
+
 
   <div gridster-item="gridsterShareacab"
        ba-panel
@@ -44,12 +52,13 @@
        class="widget">
       <share-a-cab data="{name: 'generic'}"></share-a-cab>
   </div>
+
   <div gridster-item="gridsterLostnfound"
        ba-panel
        ba-panel-title="Lost n Found"
-       ba-panel-class="xmedium-panel with-scroll"
+       ba-panel-class="full-height-panel feed-comply-panel with-scroll"
        class="widget">
-      <lost-n-found data="{name: 'generic'}"></lost-n-found>
+      <lost-n-found></lost-n-found>
   </div>
 
     <div gridster-item="gridsterBuynSell"

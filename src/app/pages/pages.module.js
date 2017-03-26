@@ -26,7 +26,12 @@
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/home');
 
-    baSidebarServiceProvider.addStaticItem();
+    baSidebarServiceProvider.addStaticItem({
+      title: 'The Fifth Estate',
+      icon: 'ion-document',
+      fixedHref: 'http://www.t5eiitm.org/',
+      external: true
+    });
     baSidebarServiceProvider.addStaticItem();
   }
 

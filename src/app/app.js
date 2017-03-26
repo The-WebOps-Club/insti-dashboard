@@ -22,7 +22,8 @@ angular.module('BlurAdmin', [
     'self',
     'http://hospital.iitm.ac.in/**',
     'https://students.iitm.ac.in:444/**',
-    'https://students.iitm.ac.in/**'
+    'https://students.iitm.ac.in/**',
+    'http://www.t5eiitm.org/**'
   ]);
   $httpProvider.defaults.withCredentials = true;
 })

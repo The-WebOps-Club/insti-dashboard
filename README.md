@@ -15,13 +15,13 @@ Otherwise, you can host the application yourself and give us the url.
 
 This will become an embedded external widget.
 
-####Points to note:
+#### Points to note:
  - Application must be responsive following a mobile first design.
  - Must conform to overall styling of the dashboard so that the widget will not look out of place.
  - Authentication/Notification API spec has to be followed.
  - There should not be indepenedent authentication in the application while it is added as a widget in the dashboard
 
-For builing native widgets, see [Getting started with development](#Getting started with development)
+For builing native widgets, see [Getting started with development](#getting-started-with-development)
 
 ### Authentication API
 

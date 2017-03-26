@@ -34,7 +34,11 @@
     };
 
     $scope.gridsterAnnouncements = {
-      sizeX: 3,
+      sizeX: 2,
+      sizeY: 2,
+    };
+    $scope.gridsterEvents = {
+      sizeX: 2,
       sizeY: 2,
     };
 

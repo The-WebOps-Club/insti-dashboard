@@ -2,15 +2,15 @@
 <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
   <div class="announcements-message" ng-repeat="message in feed" ng-click="expandMessage(message)">
     <div class="message-icon" ng-if="message.type == 'text-message'">
-      <img class="photo-icon" ng-src="{{::( message.author | profilePicture )}}">
+      <div class="kameleon-icon with-round-bg success"><img ng-src="{{::( 'Student-3' | kameleonImg )}}"></div>
     </div>
     <div class="message-icon" ng-if="message.type != 'text-message'">
-      <img class="photo-icon" ng-src="{{::( message.author | profilePicture )}}">
+      <div class="kameleon-icon with-round-bg success"><img ng-src="{{::( 'Student-3' | kameleonImg )}}"></div>
       <span class="sub-photo-icon" ng-class="::message.type"></span>
     </div>
     <div class="text-block text-message">
       <div class="message-header">
-        <span class="author">{{ ::message.author }} {{ ::message.surname}}</span>
+        <span class="subject"><b>{{ ::message.title }}</b></span>
       </div>
       <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
         <span ng-if="message.preview">{{message.header}} </span>{{::message.text}}
@@ -20,9 +20,9 @@
           <img ng-src="{{ ::( message.preview | appImage )}}">
         </a>
       </div>
-      <div ng-show="message.expanded" class="message-time">
+      <div class="message-time">
         <div class="post-time">
-          {{::message.time}}
+          <b>{{::message.time}}</b>
         </div>
         <div class="ago-time">
           {{::message.ago}}

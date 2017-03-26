@@ -3,7 +3,7 @@
     <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
 	  <div class="feed-message" ng-repeat="message in buy" ng-click="expandMessage(message)">
 	    <div class="message-icon">
-	      <img class="photo-icon" ng-src="{{::( message.name | profilePicture )}}">
+        <div class="kameleon-icon with-round-bg info"><img ng-src="{{::( 'Online-Shopping' | kameleonImg )}}"></div>
 	    </div>
 	    <div class="text-block text-message">
 	      <div class="message-header">

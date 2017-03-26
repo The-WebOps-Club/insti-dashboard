@@ -1,10 +1,10 @@
 <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
   <div class="lnf-feed-message" ng-repeat="message in feed" ng-click="expandMessage(message)">
     <div class="message-icon" ng-if="message.type == 'text-message'">
-      <div class="kameleon-icon with-round-bg info"><img ng-src="{{::( 'Clipboard-Plan' | kameleonImg )}}"></div>
+      <div class="kameleon-icon with-round-bg info"><img ng-src="{{::( 'Bus' | kameleonImg )}}"></div>
     </div>
     <div class="message-icon" ng-if="message.type != 'text-message'">
-      <div class="kameleon-icon with-round-bg info"><img ng-src="{{::( 'Clipboard-Plan' | kameleonImg )}}"></div>
+      <div class="kameleon-icon with-round-bg info"><img ng-src="{{::( 'Bus' | kameleonImg )}}"></div>
       <span class="sub-photo-icon" ng-class="::message.type"></span>
     </div>
     <div class="chat-icon">

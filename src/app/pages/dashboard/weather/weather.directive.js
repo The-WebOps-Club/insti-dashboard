@@ -6,7 +6,7 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.dashboard')
-      .directive('weather', weather);
+      .directive('dashWeather', weather);
 
   /** @ngInject */
   function weather() {

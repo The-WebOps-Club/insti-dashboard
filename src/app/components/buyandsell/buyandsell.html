@@ -1,0 +1,84 @@
+<uib-tabset>
+  <uib-tab heading="Want to Sell?">
+    <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+	  <div class="feed-message" ng-repeat="message in buy" ng-click="expandMessage(message)">
+	    <div class="message-icon">
+	      <img class="photo-icon" ng-src="{{::( message.name | profilePicture )}}">
+	    </div>
+	    <div class="text-block text-message">
+	      <div class="message-header">
+	        <a href="{{message.link}}" ng-if='message.link != null' target="_blank"><h2 class="author" >{{ ::message.product }} - Rs:{{message.price}}</h2></a>
+	        <a ng-if='message.link == null'><h2 class="author" >{{ ::message.product }} - Rs:{{message.price}}</h2></a>
+	        <span class="author">{{ ::message.name }} {{ ::message.surname}}</span>
+	        <button type="button" class="btn btn-primary btn-sm pull-right">Sell</button>
+	      </div>
+	      <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
+	        {{::message.description}}
+	      </div>
+	      <div ng-show="message.expanded" class="message-time">
+	        <div class="post-time">
+	          {{::message.time}}
+	        </div>
+	        <div class="ago-time">
+	          {{::message.ago}}
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </uib-tab>
+  <uib-tab heading="Want to Buy?">
+	<div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+	  <div class="feed-message" ng-repeat="message in sell" ng-click="expandMessage(message)">
+	    <div class="message-icon">
+	      <img class="photo-icon" ng-src="{{::( message.name | profilePicture )}}">
+	    </div>
+	    <div class="text-block text-message">
+	      <div class="message-header">
+	        <a href="{{message.link}}" ng-if='message.link != null' target="_blank"><h2 class="author" >{{ ::message.product }} - Rs:{{message.price}}</h2></a>
+	        <a ng-if='message.link == null'><h2 class="author" >{{ ::message.product }} - Rs:{{message.price}}</h2></a>
+	        <span class="author">{{ ::message.name }} {{ ::message.surname}}</span>
+	        <button type="button" class="btn btn-primary btn-sm pull-right">Buy</button>
+	      </div>
+	      <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
+	        {{::message.description}}
+	      </div>
+	      <div ng-show="message.expanded" class="message-time">
+	        <div class="post-time">
+	          {{::message.time}}
+	        </div>
+	        <div class="ago-time">
+	          {{::message.ago}}
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    </uib-tab>
+	<uib-tab class="pull-right">
+    <uib-tab-heading>
+      <i class="ion-plus-round"></i>
+    </uib-tab-heading>
+    <form>
+      <div class="form-group">
+        <select class="form-control selectpicker" selectpicker title="Type"
+                ng-model="typestore"
+                ng-options="item as item.label for item in type">
+        </select>
+      </div>
+      <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Product">
+	  </div>
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Product Link">
+	  </div>
+	  <div class="form-group">
+	    <input type="number" class="form-control" placeholder="Price">
+	  </div>
+	  <div class="form-group">
+	    <input type="text" class="form-control" placeholder="Description"></input>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+  </uib-tab>
+</uib-tabset>

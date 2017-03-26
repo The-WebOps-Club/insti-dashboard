@@ -1,4 +1,4 @@
-.announcements-message {
+.lnf-feed-message {
   $text-message-color: $default-text;
   $video-message-color: $danger;
   $image-message-color: $success;
@@ -16,7 +16,7 @@
     height: 60px;
     float: left;
     position: relative;
-    margin-left: 20px;
+    margin-left: 0px;
     > img, .media-icon {
       border-radius: 30px;
       width: 100%;
@@ -70,11 +70,21 @@
     }
   }
 
+
+  .chat-icon {
+    cursor: pointer;
+    width: 40px;
+    height: 60px;
+    float: right;
+    position: relative;
+    margin-left: 0px;
+
+  }
   .text-block {
     cursor: pointer;
     position: relative;
     border-radius: 5px;
-    margin: 0 0 0 80px;
+    margin: 0 40px 0 60px;
     padding: 5px 20px;
     color: $default-text;
     width: 280px;
@@ -115,10 +125,6 @@
     font-size: 12px;
     padding-bottom: 5px;
     .author {
-      font-size: 12px;
-      padding-right: 5px;
-    }
-    .subject {
       font-size: 13px;
       padding-right: 5px;
     }

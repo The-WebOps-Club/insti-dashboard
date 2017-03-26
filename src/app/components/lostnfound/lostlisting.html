@@ -1,16 +1,17 @@
-
 <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-  <div class="announcements-message" ng-repeat="message in feed" ng-click="open(message)">
+  <div class="lnf-feed-message" ng-repeat="message in feed" ng-click="expandMessage(message)">
     <div class="message-icon" ng-if="message.type == 'text-message'">
-      <img class="photo-icon" ng-src="{{::( message.dauthor | profilePicture )}}">
+      <img class="photo-icon" ng-src="{{::( message.author | profilePicture )}}">
     </div>
     <div class="message-icon" ng-if="message.type != 'text-message'">
-      <img class="photo-icon" ng-src="{{::( message.dauthor | profilePicture )}}">
+      <img class="photo-icon" ng-src="{{::( message.author | profilePicture )}}">
       <span class="sub-photo-icon" ng-class="::message.type"></span>
+    </div>
+    <div class="chat-icon">
+        <button type="button" class="btn btn-primary btn-icon"><i class="ion-chatbox-working"></i></button>
     </div>
     <div class="text-block text-message">
       <div class="message-header">
-        <span class="subject">{{ ::message.subject }}</span><br/>
         <span class="author">{{ ::message.author }} {{ ::message.surname}}</span>
       </div>
       <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
@@ -21,12 +22,7 @@
           <img ng-src="{{ ::( message.preview | appImage )}}">
         </a>
       </div>
-      <div class="tags">
-        <span class="tag label label-default">Students</span>
-        <span class="tag label label-primary">PhD</span>
-        <span class="tag label label-warning">ED2012</span>
-      </div>
-      <div class="message-time">
+      <div ng-show="message.expanded" class="message-time">
         <div class="post-time">
           {{::message.time}}
         </div>

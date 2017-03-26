@@ -54,12 +54,22 @@
 
     $scope.gridsterHospital = {
       sizeX: 3,
-      sizeY: 1
+      sizeY: 4
     };
 
     $scope.gridsterShareacab = {
       sizeX: 3,
-      sizeY: 1
+      sizeY: 2
+    };
+
+    $scope.gridsterBuynSell = {
+      sizeX: 3,
+      sizeY: 2
+    };
+
+    $scope.gridsterLostnfound = {
+      sizeX: 3,
+      sizeY: 3
     }
 
   }

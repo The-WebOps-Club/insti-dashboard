@@ -2,44 +2,44 @@
   'use strict';
 
 	angular.module('BlurAdmin.components')
-			.directive('announcements', function(){
+			.directive('lostNFound', function(){
 				return {
 			 		restrict: 'E',
-			 		controller: 'AnnouncementCtrl',
-			    templateUrl: 'app/components/announcements/announcements.html'
+			 		scope: {
+			 			data: '=data'
+			 		},
+			    	templateUrl: 'app/components/lostnfound/lostnfound.html'
+			  	};
+			})
+      .directive('lostListing', function(){
+				return {
+			 		restrict: 'E',
+			 		controller: 'LostListingCtrl',
+			    templateUrl: 'app/components/lostnfound/lostlisting.html'
 			  };
 			})
-      .controller('AnnouncementCtrl', ['$scope', '$uibModal', function($scope, $uibModal){
-        $scope.open = function (announcement) {
-          $uibModal.open({
-            animation: true,
-            templateUrl: 'app/components/announcements/announcementModal.html',
-            size: 'lg',
-            controller: ['$scope', function ($scope) {
-              $scope.message = announcement;
-            }]
-          });
-        }
+      .controller('LostListingCtrl',['$scope', LostListingCtrl]);
+
+      /** @ngInject */
+      function LostListingCtrl($scope) {
+        $scope.item = {};
+        
         $scope.feed = [
           {
             type: 'text-message',
-            author: 'Secretary (Sports)',
-            dauthor: 'Kostya',
+            author: 'Kostya',
             surname: 'Danovsky',
-            subject: 'Mini-camp for 33rd Inter IIT Aquatics meet 2017',
             header: 'Posted new message',
-            text: 'The Institute Aquatics Team will be commencing their practice for the 33rd Inter IIT Aquatics meet and a Water polo mini-camp is being organised for all the enthusiasts who want to try out the sport and have a shot at joining the institute team. The camp will be conducted from 6:00 to 8:00 PM, for a duration of 18 Days, beginning 27th March. Please note that the students with swimming card will only be allowed for the camp. All those who are interested, please fill out this form on or before 26th March. Come join the Madras Sharks in their quest for ultimate glory!For further queries, please contact Sriram Ganesh at 9790999366 or Ananda Krishnan at 9176195100.',
+            text: 'Guys, check this out: \nA police officer found a perfect hiding place for watching for speeding motorists. One day, the officer was amazed when everyone was under the speed limit, so he investigated and found the problem. A 10 years old boy was standing on the side of the road with a huge hand painted sign which said "Radar Trap Ahead." A little more investigative work led the officer to the boy\'s accomplice: another boy about 100 yards beyond the radar trap with a sign reading "TIPS" and a bucket at his feet full of change.',
             time: 'Today 11:55 pm',
             ago: '25 minutes ago',
             expanded: false,
           }, {
             type: 'video-message',
-            dauthor: 'Andrey',
-            subject: 'Choreo Club Spark Workshop on March 29 8 PM at SAC',
-            author: 'Secretary (Cultural Affairs Arts)',
+            author: 'Andrey',
             surname: 'Hrabouski',
-            header: '',
-            text: 'Are you bored preparing for Quizzes ? Well worry not because SPARK is coming to your rescue! Lots of foot thumping music and amazing dance moves to look forward to. SO get your swagger on and get ready to break a leg! From March 29th , SAC , 8 PM Dance First, Think Later',
+            header: 'Added new video',
+            text: '"Vader and Me"',
             preview: 'app/feed/vader-and-me-preview.png',
             link: 'https://www.youtube.com/watch?v=IfcpzBbbamk',
             time: 'Today 9:30 pm',
@@ -47,12 +47,10 @@
             expanded: false,
           }, {
             type: 'image-message',
-            dauthor: 'Vlad',
-            author: 'ANKIT JAIN',
-            subject: 'MEAs Initiative - Clean Energy Yatra Applications',
-            surname: '',
+            author: 'Vlad',
+            surname: 'Lugovsky',
             header: 'Added new image',
-            text: 'Are you bored preparing for Quizzes ? Well worry not because SPARK is coming to your rescue! Lots of foot thumping music and amazing dance moves to look forward to. SO get your swagger on and get ready to break a leg! From March 29th , SAC , 8 PM Dance First, Think Later',
+            text: '"My little kitten"',
             preview: 'app/feed/my-little-kitten.png',
             link: 'http://api.ning.com/files/DtcI2O2Ry7A7VhVxeiWfGU9WkHcMy4WSTWZ79oxJq*h0iXvVGndfD7CIYy-Ax-UAFCBCdqXI4GCBw3FOLKTTjQc*2cmpdOXJ/1082127884.jpeg',
             time: 'Today 2:20 pm',
@@ -60,9 +58,8 @@
             expanded: false,
           }, {
             type: 'text-message',
-            dauthor: 'Nasta',
+            author: 'Nasta',
             surname: 'Linnie',
-            subject: 'Police officer',
             header: 'Posted new message',
             text: 'Haha lol',
             time: '11.11.2015',
@@ -70,9 +67,8 @@
             expanded: false,
           }, {
             type: 'geo-message',
-            dauthor: 'Nick',
+            author: 'Nick',
             surname: 'Cat',
-            subject: 'Police officer',
             header: 'Posted location',
             text: '"New York, USA"',
             preview: 'app/feed/new-york-location.png',
@@ -82,8 +78,7 @@
             expanded: false,
           }, {
             type: 'text-message',
-            dauthor: 'Vlad',
-            subject: 'Police officer',
+            author: 'Vlad',
             surname: 'Lugovsky',
             header: 'Posted new message',
             text: "First snake: I hope I'm not poisonous. Second snake: Why? First snake: Because I bit my lip!",
@@ -92,9 +87,8 @@
             expanded: false,
           }, {
             type: 'text-message',
-            dauthor: 'Andrey',
+            author: 'Andrey',
             surname: 'Hrabouski',
-            subject: 'Police officer',
             header: 'Posted new message',
             text: 'How do you smuggle an elephant across the border? Put a slice of bread on each side, and call him "lunch".',
             time: '14.11.2015',
@@ -102,8 +96,7 @@
             expanded: false,
           }, {
             type: 'text-message',
-            dauthor: 'Nasta',
-            subject: 'Police officer',
+            author: 'Nasta',
             surname: 'Linnie',
             header: 'Posted new message',
             text: 'When your hammer is C++, everything begins to look like a thumb.',
@@ -112,19 +105,17 @@
             expanded: false,
           }, {
             type: 'text-message',
-            dauthor: 'Alexander',
+            author: 'Alexander',
             surname: 'Demeshko',
             header: 'Posted new message',
-            subject: 'Police officer',
             text: '“I mean, they say you die twice. One time when you stop breathing and a second time, a bit later on, when somebody says your name for the last time." ©',
             time: '15.11.2015',
             ago: '6 days ago',
             expanded: false,
           }, {
             type: 'image-message',
-            subject: 'Police officer',
+            author: 'Nick',
             surname: 'Cat',
-            dauthor: 'Nick',
             header: 'Posted photo',
             text: '"Protein Heroes"',
             preview: 'app/feed/genom.png',
@@ -135,11 +126,10 @@
           },
           {
             type: 'text-message',
-            dauthor: 'Kostya',
+            author: 'Kostya',
             surname: 'Danovsky',
-            subject: 'Police officer',
-            text: 'Why did the CoffeeScript developer keep getting lost? Because he couldn\'t find his source without a map',
             header: 'Posted new message',
+            text: 'Why did the CoffeeScript developer keep getting lost? Because he couldn\'t find his source without a map',
             time: '18.11.2015',
             ago: '9 days ago',
             expanded: false,
@@ -149,6 +139,13 @@
         $scope.expandMessage = function(message){
           message.expanded = !message.expanded;
         }
-      }]);
-
+        $scope.ReportItem = function (event, clickPlus) {
+          if (clickPlus || event.which === 13) {
+            $scope.feed.unshift({
+              text: $scope.newItem,
+            });
+            $scope.newTodoText = '';
+          }
+        };
+      }
 })();

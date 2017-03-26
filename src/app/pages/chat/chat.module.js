@@ -18,7 +18,7 @@
           controllerAs: "vm",
           title: 'Chat',
           sidebarMeta: {
-            order: 0,
+            order: 2,
             icon: 'ion-android-chat'
           }
         })

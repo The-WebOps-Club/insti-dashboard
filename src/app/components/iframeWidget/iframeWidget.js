@@ -6,9 +6,7 @@
 				return {
 			 		restrict: 'E',
 			 		scope: {
-			 			title: '@title',
-			 			url: '@url',
-			 			gridsterData: '@gridsterData'
+			 			url: '@url'
 			 		},
 			    	templateUrl: 'app/components/iframeWidget/iframeWidget.html'
 			  	};

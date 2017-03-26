@@ -71,6 +71,10 @@
       sizeX: 2,
       sizeY: 2
     }
+    $scope.gridsterLostnfound = {
+      sizeX: 3,
+      sizeY: 3
+    }
 
   }
 

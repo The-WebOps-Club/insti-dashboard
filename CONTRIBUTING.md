@@ -1,4 +1,4 @@
-# insti-dashboard
+# Insti-Dashboard
 Dashboard for all insti related activities
 
 ## Guidelines for contribution

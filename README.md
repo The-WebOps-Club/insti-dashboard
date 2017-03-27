@@ -1,7 +1,7 @@
 # Insti-Dashboard
 Dashboard for all insti related activities
 
-We're now live!! Check us out [here](http://iitm.dashboard.webops.club/)
+We're now live!! Check us out [here](http://iitm.webops.club/)
 
 
 ## Submit a new widget

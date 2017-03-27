@@ -115,6 +115,25 @@
       border-radius: 5px; 
   }
 
+  .chat .unread-msgs {
+      font-family: $font-family;
+      font-weight: $font-normal;
+      color: $default-text;
+      text-align: center;
+      padding: 1% 40%;
+      margin: 2% 0%;
+      background-color: #e0e0e0;
+      -webkit-box-shadow: 0px 3px 7px 0px rgba(92,82,92,0.5);
+      -moz-box-shadow: 0px 3px 7px 0px rgba(92,82,92,0.5);
+      box-shadow: 0px 3px 7px 0px rgba(92,82,92,0.5);    
+      
+      >.unread-text {      
+        background-color: #fdfdfd;
+        border-radius: 5px;
+        padding: 4% 3%;
+      }
+  }
+
   .other .msg {
       order: 1;
       border-top-left-radius: 0px;

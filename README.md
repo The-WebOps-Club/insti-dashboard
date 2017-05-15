@@ -1,6 +1,8 @@
 # Insti-Dashboard
 
 [![Join the chat at https://gitter.im/The-WebOps-Club/insti-dashboard](https://badges.gitter.im/The-WebOps-Club/insti-dashboard.svg)](https://gitter.im/The-WebOps-Club/insti-dashboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 Dashboard for all insti related activities
 
 We're now live!! Check us out [here](http://iitm.webops.club/)

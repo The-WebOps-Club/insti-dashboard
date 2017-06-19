@@ -1,0 +1,29 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Authorize Device</h4>
+  </div>
+  <form name="linkForm">
+    <div class="modal-body">
+      Machine IP: <b>10.22.37.181</b> <br>
+      Machine MAC address:<b>c8:ff:28:78:51:27</b> <br/>
+      <br/>
+      <p>Select the validity of this authorization</p>
+      <div class="form-group">
+        <select class="form-control" placeholder="validity" ng-model="validity" name="validity">
+          <option value="">---Please select---</option> <!-- not selected / blank option -->
+          <option ng-repeat="option in validityOptions" value="{{option}}">{{option}}</option> <!-- interpolation -->
+        </select>
+      </div>
+      <p><u>Please note that you will be held responsible for all network activity originating from this device for the specified time period.</u></p>
+      <!--
+      <p><b>By approving the machine, you confirm that you have read and understood the terms of the Acceptable Use Policy of the IIT Madras Computer Centre with regard to use of Computing and Network resources. The complete policy is available at <a href="https://web.iitm.ac.in/cc/node/216" target="_blank">Acceptable Use Policy</a>. Please read through it and understand it before you proceed.</b></p>
+      -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" ng-click="ok(link)">Authorize</button>
+    </div>
+  </form>
+</div>

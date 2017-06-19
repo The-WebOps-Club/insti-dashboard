@@ -1,0 +1,58 @@
+<div ba-panel height="800px">
+  <div class="panel-content">
+    
+    <div class="row" style="font-size: x-large;">
+      <div class="col-md-6">
+        <div ba-panel>
+            <div class="panel-content">
+                <i class="ion-checkmark-circled"></i>
+                Connected to internet
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div ba-panel>
+            <div class="panel-content">
+                <i class="ion-wifi"></i>
+                14GB Used today
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="with-line">Authorized Devices</h3>
+
+    <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal()">
+      <i class="ion-android-checkmark-circle"></i>Authorize this device
+    </button>
+
+	<div >
+	  <table class="table table-hover">
+		<thead>
+		<tr>
+		  <th class="table-id">#</th>
+		  <th>MAC</th>
+		  <th>IP</th>
+		  <th>Nick</th>
+		  <th>Valid till</th>
+		  <th>Status</th>
+		</tr>
+		</thead>
+		<tbody>
+		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
+		<tr ng-repeat="item in devices">
+		  <td class="table-id">{{item.id}}</td>
+		  <td>{{item.mac}}</td>
+		  <td>{{item.ip}}</td>
+		  <td>{{item.nick}}</td>
+		  <td>{{item.validTill}}</td>
+		  <td>{{item.status}}</td>
+		</tr>
+		</tbody>
+	  </table>
+	</div>
+
+
+  </div>
+</div>

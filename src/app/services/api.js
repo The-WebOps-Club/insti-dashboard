@@ -7,8 +7,8 @@
   /** @ngInject */
   function api($q, $http, $log) {
     var user = undefined
-    var hostname = "webops.club";
-    var scheme = 'https';
+    var hostname = "hasura.dashboard.iitm.ac.in";
+    var scheme = 'http';
     var endpoints = {
         'auth': scheme + '://auth.' + hostname,
         'data': scheme + '://data.' + hostname,

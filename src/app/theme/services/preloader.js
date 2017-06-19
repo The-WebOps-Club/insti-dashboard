@@ -19,14 +19,14 @@
           d.resolve();
         };
         return d.promise;
-      },
-      loadAmCharts : function(){
-        var d = $q.defer();
-        AmCharts.ready(function(){
-          d.resolve();
-        });
-        return d.promise;
       }
+      //loadAmCharts : function(){
+      //  var d = $q.defer();
+      //  AmCharts.ready(function(){
+      //    d.resolve();
+      //  });
+      //  return d.promise;
+      //}
     }
   }
 

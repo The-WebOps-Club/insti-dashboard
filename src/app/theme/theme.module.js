@@ -7,9 +7,9 @@
 
   angular.module('BlurAdmin.theme', [
       'toastr',
-      'chart.js',
-      'angular-chartist',
-      'angular.morris-chart',
+      //'chart.js',
+      //'angular-chartist',
+      //'angular.morris-chart',
       'textAngular',
       'BlurAdmin.theme.components',
       'BlurAdmin.theme.inputs'

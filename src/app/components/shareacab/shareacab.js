@@ -34,6 +34,36 @@
             time: '18.11.2015',
             ago: '9 days ago',
             expanded: false,
+          },
+          {
+            type: 'text-message',
+            author: 'Kostya',
+            surname: 'Danovsky',
+            header: 'Posted new message',
+            text: 'To Airport at 6 am',
+            time: '18.11.2015',
+            ago: '9 days ago',
+            expanded: false,
+          },
+          {
+            type: 'text-message',
+            author: 'Kostya',
+            surname: 'Danovsky',
+            header: 'Posted new message',
+            text: 'To Airport at 6 am',
+            time: '18.11.2015',
+            ago: '9 days ago',
+            expanded: false,
+          },
+          {
+            type: 'text-message',
+            author: 'Kostya',
+            surname: 'Danovsky',
+            header: 'Posted new message',
+            text: 'To Airport at 6 am',
+            time: '18.11.2015',
+            ago: '9 days ago',
+            expanded: false,
           }
         ];
 

@@ -1,4 +1,10 @@
 <div gridster="gridsterOpts">
+    <div gridster-item="gridsterTodo"
+         ba-panel
+         ba-panel-title="To Do List"
+         ba-panel-class="full-height-panel feed-comply-panel with-scroll todo-panel">
+      <dashboard-todo></dashboard-todo>
+    </div>
     <div gridster-item="gridsterAnnouncements"
          ba-panel
          ba-panel-title="announcements"
@@ -13,11 +19,12 @@
          class="widget">
       <events></events>
     </div>
-    <div gridster-item="gridsterTodo"
-         ba-panel
-         ba-panel-title="To Do List"
-         ba-panel-class="full-height-panel feed-comply-panel with-scroll todo-panel">
-      <dashboard-todo></dashboard-todo>
+    <div gridster-item="gridsterStudents"
+    		 ba-panel
+    		 ba-panel-title="Students"
+    		 ba-panel-class="full-height-panel feed-comply-panel with-scroll"
+    		 class="widget">
+         <iframe-widget url="https://students.iitm.ac.in/home/"></iframe-widget>
     </div>
     <div gridster-item="gridsterCalendar"
          ba-panel
@@ -26,7 +33,7 @@
       <dashboard-calendar></dashboard-calendar>
     </div>
 
-
+    <!--
     <div gridster-item="gridsterWeather"
          ba-panel
          ba-panel-title="Weather"
@@ -34,14 +41,7 @@
       <dash-weather></dash-weather>
 
     </div>
-
-    <div gridster-item="gridsterStudents"
-    		 ba-panel
-    		 ba-panel-title="Students"
-    		 ba-panel-class="full-height-panel feed-comply-panel with-scroll"
-    		 class="widget">
-         <iframe-widget url="https://students.iitm.ac.in/home/"></iframe-widget>
-    </div>
+    -->
 
 
   <div gridster-item="gridsterShareacab"

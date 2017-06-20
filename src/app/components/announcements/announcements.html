@@ -1,4 +1,6 @@
 
+<div class="overlay-wrapper" >
+<div class="overlay"></div>
 <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
   <div class="announcements-message" ng-repeat="message in feed" ng-click="open(message)">
     <div class="message-icon" ng-if="message.type == 'text-message'">
@@ -36,4 +38,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

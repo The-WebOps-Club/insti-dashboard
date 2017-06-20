@@ -6,11 +6,12 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.home')
-      .controller('HomeCtrl', ['$scope', HomeCtrl]);
+      .controller('HomeCtrl', HomeCtrl);
 
   /** @ngInject */
-  function HomeCtrl($scope) {
+  function HomeCtrl($scope, toastr) {
 
+    toastr.info('Tip: You can drag, move and resize the widgets!');
     $scope.gridsterOpts = {
       margins: [10, 10],
       columns: 6,
@@ -53,7 +54,7 @@
     };
 
     $scope.gridsterStudents = {
-      sizeX: 2,
+      sizeX: 3,
       sizeY: 2
     };
 

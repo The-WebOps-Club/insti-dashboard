@@ -54,7 +54,7 @@
           lat: $scope.geoData.geoplugin_latitude,
           lon: $scope.geoData.geoplugin_longitude,
           units: $scope.units
-        }
+        }, withCredentials: false
       }).then(function success(response) {
         saveWeatherData(response.data);
         makeChart($scope.weather.days[$scope.weather.current].timeTemp)

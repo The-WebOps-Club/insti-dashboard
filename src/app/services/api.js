@@ -150,6 +150,21 @@
       return defer.promise;
     };
 
+    this.removeDevice= function(args){
+      var _this = this;
+      var defer = $q.defer(),
+          query_params = angular.toJson(args);
+
+      $http.post(endpoints.net + '/remove_device', query_params)
+        .success(function(data){
+          defer.resolve(data);
+        })
+      .error(function(data){
+        defer.reject(data)
+      })
+      return defer.promise;
+    };
+
   }
 
 })();

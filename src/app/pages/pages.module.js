@@ -11,7 +11,7 @@
     'BlurAdmin.pages.home',
     'BlurAdmin.pages.chat',
     'BlurAdmin.pages.videochat',
-    // 'BlurAdmin.pages.dashboard',
+    'BlurAdmin.pages.dashboard',
     // 'BlurAdmin.pages.ui',
     // 'BlurAdmin.pages.components',
     // 'BlurAdmin.pages.form',
@@ -19,7 +19,6 @@
     // 'BlurAdmin.pages.charts',
     'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
-    'BlurAdmin.pages.network'
   ])
       .config(routeConfig);
 

@@ -19,7 +19,7 @@
         animation: true,
         controller: 'AuthzDeviceModalCtrl',
         templateUrl: 'app/pages/network/authzDeviceModal.html'
-      }).result.then(function (data) {
+      }).result.then(function () {
         loadDevices();
       });
     };

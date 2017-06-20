@@ -23,9 +23,9 @@
         console.log(data);
         toastr.success('Device authorized for internet access');
       }).catch(function(error){
-        toastr.error(error, 'Authorization failed');
+        toastr.error(error, 'Authorization failed, delete the device and try again');
       });
-      $uibModalInstance.close($scope.data);
+      $uibModalInstance.close();
     };
     $scope.validityOptions = [
       {

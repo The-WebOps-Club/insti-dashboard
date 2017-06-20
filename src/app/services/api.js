@@ -1,3 +1,9 @@
+/**
+ * @file src/app/services/api.js
+ * @author Shahidh K Muhammed <shahidhkmuhammed@gmail.com>
+ * Date: 20.06.2017
+ * Last Modified: 20.06.2017
+ */
 (function () {
   'use strict';
 
@@ -7,12 +13,17 @@
   /** @ngInject */
   function api($q, $http, $log) {
     this.user = undefined;
+    this.ip = undefined;
+	this.publicIp = undefined;
+	this.internet = false;
+	this.intranet = true;
     var user = undefined;
     var hostname = "hasura.dashboard.iitm.ac.in";
     var scheme = 'http';
     var endpoints = {
         'auth': scheme + '://auth.' + hostname,
         'data': scheme + '://data.' + hostname,
+        'net': scheme + '://api.' + hostname + ':8080'
     }
 
     this.isSignedIn = function() {
@@ -89,6 +100,56 @@
         where: {id: _this.user.hasura_id}
       });
     };
+
+    this.getIp = function() {
+      var _this = this;
+      var defer = $q.defer();
+      $http.get(endpoints.net + '/get_ip')
+        .success(function(data){
+          _this.ip = data.ipv4;
+		  _this.intranet = true;
+          defer.resolve(data);
+        })
+      .error(function(data){
+		_this.intranet = false;
+        defer.reject(data)
+      })
+      return defer.promise;
+    };
+
+    this.getPublicIp = function() {
+      var _this = this;
+      var defer = $q.defer();
+      $http.get(scheme + '://ipinfo.io', {withCredentials: false})
+        .success(function(data){
+          _this.publicIp = data.ip;
+		  _this.internet = true;
+          defer.resolve(data);
+        })
+      .error(function(data){
+		_this.internet = false;
+        defer.reject(data)
+      })
+      return defer.promise;
+    };
+
+
+
+    this.authorizeDevice= function(args){
+      var _this = this;
+      var defer = $q.defer(),
+          query_params = angular.toJson(args);
+
+      $http.post(endpoints.net + '/authorize_device', query_params)
+        .success(function(data){
+          defer.resolve(data);
+        })
+      .error(function(data){
+        defer.reject(data)
+      })
+      return defer.promise;
+    };
+
   }
 
 })();

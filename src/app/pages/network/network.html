@@ -1,31 +1,36 @@
 <div ba-panel height="800px">
   <div class="panel-content">
-    
-    <div class="row" style="font-size: x-large;">
-      <div class="col-md-6">
-        <div ba-panel>
-            <div class="panel-content">
-                <i class="ion-checkmark-circled"></i>
-                Connected to internet
-            </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div ba-panel>
-            <div class="panel-content">
-                <i class="ion-wifi"></i>
-                14GB Used today
-            </div>
-        </div>
-      </div>
-    </div>
 
-
-    <h3 class="with-line">Authorized Devices</h3>
+    <ul class="btn-list clearfix">
+      <!--<li><button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Primary</button></li>-->
+      <li>
+        <div class="btn-group" role="intranet-btn">
+          <button type="button" class="btn btn-with-icon" ng-class="intranet ? 'btn-success' : 'btn-danger'">
+            <i ng-class="intranet ? 'ion-checkmark-circled' : 'ion-close-circled'"></i>Intranet
+          </button>
+          <button type="button" class="btn btn-default btn-with-icon"><i class="ion-stats-bars"></i>{{ip}}</button>
+        </div>
+      </li>
+      <li>
+        <div class="btn-group" role="internet-btn">
+          <button type="button" class="btn btn-with-icon" ng-class="internet ? 'btn-success' : 'btn-danger'">
+            <i ng-class="internet ? 'ion-checkmark-circled' : 'ion-close-circled'"></i>Internet
+          </button>
+          <button type="button" class="btn btn-default btn-with-icon"><i class="ion-stats-bars"></i>{{publicIp}}</button>
+        </div>
+      </li>
+      <!--<li><button type="button" class="btn btn-info btn-with-icon"><i class="ion-information"></i>Info</button></li>-->
+      <!--<li><button type="button" class="btn btn-warning btn-with-icon"><i class="ion-android-warning"></i>Warning</button></li>-->
+      <!--<li><button type="button" class="btn btn-danger btn-with-icon"><i class="ion-nuclear"></i>Danger</button></li>-->
+    </ul>
 
     <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal()">
       <i class="ion-android-checkmark-circle"></i>Authorize this device
     </button>
+
+
+
+    <h3 class="with-line">Authorized Devices</h3>
 
 	<div >
 	  <table class="table table-hover">
@@ -35,19 +40,25 @@
 		  <th>MAC</th>
 		  <th>IP</th>
 		  <th>Nick</th>
+		  <th>Authorized at</th>
 		  <th>Valid till</th>
-		  <th>Status</th>
+		  <th>Actions</th>
 		</tr>
 		</thead>
 		<tbody>
 		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
 		<tr ng-repeat="item in devices">
 		  <td class="table-id">{{item.id}}</td>
-		  <td>{{item.mac}}</td>
+		  <td>{{item.device.mac_addr}}</td>
 		  <td>{{item.ip}}</td>
-		  <td>{{item.nick}}</td>
-		  <td>{{item.validTill}}</td>
-		  <td>{{item.status}}</td>
+		  <td>{{item.device.nick}}</td>
+		  <td>{{item.associated_at}}</td>
+		  <td>{{item.valid_till}}</td>
+		  <td>
+		    <button type="button" class="btn btn-danger btn-xs">
+		      <i class="ion-android-close"></i>
+		    </button>
+		  </td>
 		</tr>
 		</tbody>
 	  </table>

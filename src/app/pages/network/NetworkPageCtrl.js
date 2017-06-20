@@ -12,117 +12,49 @@
     .controller('NetworkPageCtrl', NetworkPageCtrl);
 
   /** @ngInject */
-  function NetworkPageCtrl($scope, fileReader, $filter, $uibModal) {
+  function NetworkPageCtrl($scope, fileReader, $filter, $uibModal, api, toastr) {
 
     $scope.showModal = function () {
       $uibModal.open({
         animation: true,
         controller: 'AuthzDeviceModalCtrl',
         templateUrl: 'app/pages/network/authzDeviceModal.html'
-      }).result.then(function (link) {
-        var href = link;
+      }).result.then(function (data) {
+        loadDevices();
       });
     };
 
-    $scope.devices = [
-      {
-	id: 1,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 2,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 3,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active',
-	current: true
-      },
-      {
-	id: 4,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 5,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 6,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 1,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 2,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 3,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 4,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 5,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      },
-      {
-	id: 6,
-	mac: 'c8:ff:28:78:51:27',
-	ip: '10.21.90.113',
-	nick: 'Dell XPS 13',
-	validTill: 'Mon Jul 19 2018, 20:00:00',
-	status: 'active'
-      }
-    ]
+    function loadDevices() {
+      api.query('select', {
+        table: 'ipv4',
+        columns: ['id', 'ip', 'associated_at', 'valid_till', {'name':'device', 'columns':['*']}],
+        where: {device:{user:{id: api.user.hasura_id}}}
+      }).then(function(data){
+        console.log(data);
+        $scope.devices = data;
+      }).catch(function(error){
+        console.log(error);
+        toastr.error(error, 'Error');
+      });
+    }
+    loadDevices();
+
+    api.getIp().then(function(data){
+      $scope.ip = data.ipv4;
+      $scope.intranet = api.intranet;
+    }).catch(function(error){
+      toastr.error(error, 'Unable to fetch IP address');
+      $scope.intranet = api.intranet;
+    });
+
+    api.getPublicIp().then(function(data){
+      $scope.publicIp = data.ip;
+      $scope.internet = api.internet;
+    }).catch(function(error){
+      toastr.error(error, 'Unable to connect to internet');
+      $scope.internet = api.internet;
+    });
+
 
   }
 

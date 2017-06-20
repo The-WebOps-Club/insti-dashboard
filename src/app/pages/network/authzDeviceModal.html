@@ -7,25 +7,24 @@
   </div>
   <form name="linkForm">
     <div class="modal-body">
-      Machine IP: <b>10.22.37.181</b> <br>
-      Machine MAC address:<b>c8:ff:28:78:51:27</b> <br/>
+      <button type="button" class="btn btn-default btn-with-icon"><i class="ion-stats-bars"></i>{{ip}}</button>
+      <br/>
       <br/>
       <p>MAC address</p>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="mac" ng-model="mac">
+        <input type="text" class="form-control" placeholder="mac" ng-model="params.mac_addr" required>
       </div>
 
       <p>Nick name for this device</p>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="nick name" ng-model="nick">
+        <input type="text" class="form-control" placeholder="nick name" ng-model="params.nick" required>
       </div>
 
       <p>Select the validity of this authorization</p>
 
       <div class="form-group">
-        <select class="form-control" placeholder="validity" ng-model="validity" name="validity">
-          <option value="">---Please select---</option> <!-- not selected / blank option -->
-          <option ng-repeat="option in validityOptions" value="{{option}}">{{option}}</option> <!-- interpolation -->
+        <select class="form-control" placeholder="validity" ng-model="params.validity_option" name="validity" required>
+          <option ng-repeat="option in validityOptions" value="{{option.value}}">{{option.text}}</option> <!-- interpolation -->
         </select>
       </div>
       <p><u>Please note that you will be held responsible for all network activity originating from this device for the specified time period.</u></p>
@@ -34,7 +33,7 @@
       -->
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" ng-click="ok(link)">Authorize</button>
+      <button type="button" class="btn btn-primary" ng-click="ok()">Authorize</button>
     </div>
   </form>
 </div>

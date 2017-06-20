@@ -55,7 +55,8 @@
     "angular-xeditable": "~0.5.0",
     "ng-js-tree": "~0.0.7",
     "angular-ui-select": "^0.19.6",
-    "angular-gridster": "^0.13.15"
+    "angular-gridster": "^0.13.15",
+    "angular-loading-bar": "^0.9.0"
   },
   "resolutions": {
     "angular": "~1.5.9",

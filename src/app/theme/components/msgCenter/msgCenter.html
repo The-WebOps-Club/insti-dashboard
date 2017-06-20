@@ -14,7 +14,8 @@
         <a href>Mark All as Read</a>
         <a href>Settings</a>
       </div>
-      <div class="msg-list">
+      <div class="msg-list overlay-wrapper">
+        <div class="overlay"></div>
         <a href class="clearfix" ng-repeat="msg in notifications">
           <div class="img-area"><img ng-class="{'photo-msg-item' : !msg.image}" ng-src="{{::( msg.image ||  (users[msg.userId].name | profilePicture) )}}"></div>
           <div class="msg-area">
@@ -38,7 +39,8 @@
         <a href>Mark All as Read</a>
         <a href>Settings</a>
       </div>
-      <div class="msg-list">
+      <div class="msg-list overlay-wrapper">
+        <div class="overlay"></div>
         <a href class="clearfix" ng-repeat="msg in messages">
           <div class="img-area"><img class="photo-msg-item" ng-src="{{::( users[msg.userId].name | profilePicture )}}"></div>
           <div class="msg-area">

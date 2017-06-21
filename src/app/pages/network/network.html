@@ -48,7 +48,7 @@
 		<tbody>
 		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
 		<tr ng-repeat="item in devices">
-		  <td class="table-id">{{item.id}}</td>
+		  <td class="table-id">{{$index+1}}</td>
 		  <td>{{item.device.mac_addr}}</td>
 		  <td>{{item.ip}}</td>
 		  <td>{{item.device.nick}}</td>

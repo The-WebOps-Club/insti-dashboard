@@ -33,6 +33,12 @@
       }).then(function(data){
         console.log(data);
         $scope.devices = data;
+	var i=0;
+	for(;i<$scope.devices.length;){
+	  $scope.devices[i].associated_at = moment($scope.devices[i].associated_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
+	  $scope.devices[i].valid_till = moment($scope.devices[i].valid_till).format("dddd, MMMM Do YYYY, h:mm:ss a");
+	  i++;
+	}
       }).catch(function(error){
         console.log(error);
         toastr.error(error, 'Error');

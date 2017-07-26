@@ -1,8 +1,8 @@
 /**
- * @file src/app/pages/network/RegisterDeviceModalCtrl.js
+ * @file src/app/components/networkModals/RegisterDeviceModalCtrl.js
  * @author Shahidh K Muhammed <shahidhkmuhammed@gmail.com>
  * @author Chinni Chaitanya <chchaitanya95@gmail.com>
- * Date: 19.06.2017
+ * Date: 26.07.2017
  * Last Modified: 26.07.2017
  */
 (function () {

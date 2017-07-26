@@ -14,9 +14,9 @@
   function api($q, $http, $log) {
     this.user = undefined;
     this.ip = undefined;
-	this.publicIp = undefined;
-	this.internet = false;
-	this.intranet = true;
+    this.publicIp = undefined;
+    this.internet = false;
+    this.intranet = true;
     var user = undefined;
     var hostname = "hasura.dashboard.iitm.ac.in";
     var scheme = 'http';
@@ -43,6 +43,7 @@
       }
       return deferred.promise;
     };
+
     this.login = function(username, password) {
       var _this = this;
       var deferred = $q.defer();
@@ -133,8 +134,6 @@
       return defer.promise;
     };
 
-
-
     this.authorizeDevice= function(args){
       var _this = this;
       var defer = $q.defer(),
@@ -164,7 +163,6 @@
       })
       return defer.promise;
     };
-
   }
 
 })();

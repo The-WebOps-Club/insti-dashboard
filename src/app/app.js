@@ -13,6 +13,7 @@ angular.module('BlurAdmin', [
   'ngJsTree',
   //'angular-progress-button-styles',
   'angular-loading-bar',
+  'smart-table',
 
   'BlurAdmin.theme',
   'BlurAdmin.pages',

@@ -33,12 +33,12 @@
       }).then(function(data){
         console.log(data);
         $scope.devices = data;
-	var i=0;
-	for(;i<$scope.devices.length;){
-	  $scope.devices[i].associated_at = moment($scope.devices[i].associated_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
-	  $scope.devices[i].valid_till = moment($scope.devices[i].valid_till).format("dddd, MMMM Do YYYY, h:mm:ss a");
-	  i++;
-	}
+      	var i=0;
+      	for(;i<$scope.devices.length;){
+      	  $scope.devices[i].associated_at = moment($scope.devices[i].associated_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      	  $scope.devices[i].valid_till = moment($scope.devices[i].valid_till).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      	  i++;
+      	}
       }).catch(function(error){
         console.log(error);
         toastr.error(error, 'Error');
@@ -54,34 +54,32 @@
       $scope.intranet = api.intranet;
     });
 
-
     var checkInternet = function checkInternet() {
-	  api.getPublicIp().then(function(data){
-		$scope.publicIp = data.ip;
-		$scope.internet = api.internet;
-	  }).catch(function(error){
-		toastr.error(error, 'Unable to connect to internet');
-		$scope.internet = api.internet;
-	  });
-	};
+  	  api.getPublicIp().then(function(data){
+  		  $scope.publicIp = data.ip;
+  		  $scope.internet = api.internet;
+      }).catch(function(error){
+  		  toastr.error(error, 'Unable to connect to internet');
+  		  $scope.internet = api.internet;
+  	  });
+  	};
     checkInternet();
 
     $scope.removeDevice = function(id) {
-	  var r = confirm("Are you sure you want to remove this device?");
-	  if (r == true) {
-		api.removeDevice({'device_id': id}).then(function(data){
-		  toastr.success('Device removed');
-		  $timeout(loadDevices, 1000);
-		  $timeout(checkInternet, 500);
-      }).catch(function(error){
-        toastr.error(error, 'Unable to remove device');
-        console.log(error);
-      });
-	  } else {
-		//nothing
-	  }
+  	  var r = confirm("Are you sure you want to remove this device?");
+  	  if (r == true) {
+    		api.removeDevice({'device_id': id}).then(function(data){
+    		  toastr.success('Device removed');
+    		  $timeout(loadDevices, 1000);
+    		  $timeout(checkInternet, 500);
+        }).catch(function(error){
+          toastr.error(error, 'Unable to remove device');
+          console.log(error);
+        });
+  	  } else {
+  		  //nothing
+  	  }
     };
-
 
   }
 

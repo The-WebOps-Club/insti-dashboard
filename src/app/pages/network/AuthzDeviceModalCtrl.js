@@ -17,6 +17,7 @@
     $scope.params.mac_addr = 'mac-' + api.ip;
     $scope.params.nick = 'machine-' + api.ip;
     $scope.params.validity_option = '0';
+    
     $scope.ok = function () {
       api.authorizeDevice($scope.params).then(function(data){
         $scope.data = data;
@@ -27,6 +28,7 @@
       });
       $uibModalInstance.close();
     };
+
     $scope.validityOptions = [
       {
         value: 0,
@@ -53,8 +55,6 @@
         text: '1 year'
       }
     ];
-
-
   }
 
 })();

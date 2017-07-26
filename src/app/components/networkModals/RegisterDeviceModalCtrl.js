@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.network')
+  angular.module('BlurAdmin.components')
     .controller('RegisterDeviceModalCtrl', RegisterDeviceModalCtrl);
 
   /** @ngInject */

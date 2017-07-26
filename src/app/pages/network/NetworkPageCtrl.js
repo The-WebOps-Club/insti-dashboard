@@ -20,7 +20,7 @@
         $uibModal.open({
           animation: true,
           controller: 'RegisterDeviceModalCtrl',
-          templateUrl: 'app/pages/network/registerDeviceModal.html'
+          templateUrl: 'app/components/networkModals/registerDeviceModal.html'
         }).result.then(function () {
           $timeout(loadDevices, 1000);
           checkInternet();
@@ -29,7 +29,7 @@
         $uibModal.open({
           animation: true,
           controller: 'AuthzDeviceModalCtrl',
-          templateUrl: 'app/pages/network/authzDeviceModal.html',
+          templateUrl: 'app/components/networkModals/authzDeviceModal.html',
           resolve: {
             params: function() {
               return params;

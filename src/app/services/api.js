@@ -21,25 +21,25 @@
     var hostname = "dashboard.iitm.ac.in";
     var scheme = 'http';
     var endpoints = {
-        'auth': scheme + '://auth.' + hostname,
-        'data': scheme + '://data.' + hostname,
-        'net': scheme + '://api.' + hostname + ':8080'
+      'auth': scheme + '://auth.' + hostname,
+      'data': scheme + '://data.' + hostname,
+      'net': scheme + '://api.' + hostname + ':8080'
     }
 
     this.isSignedIn = function() {
       var _this = this;
       var deferred = $q.defer();
       if (user) {
-          deferred.resolve(user);
+        deferred.resolve(user);
       } else {
-          $http.get(endpoints.auth + '/user/account/info').then(function(response){
-              user = response.data;
-              _this.user = response.data;
-              deferred.resolve(response.data);
-          }).catch(function(response){
-              deferred.reject(response.data.message);
-              $log.error(response);
-          });
+        $http.get(endpoints.auth + '/user/account/info').then(function(response){
+          user = response.data;
+          _this.user = response.data;
+          deferred.resolve(response.data);
+        }).catch(function(response){
+          deferred.reject(response.data.message);
+          $log.error(response);
+        });
       }
       return deferred.promise;
     };
@@ -48,12 +48,12 @@
       var _this = this;
       var deferred = $q.defer();
       $http.post(endpoints.auth + '/login', {username: username, password: password}).then(
-          function(response) {
-            user = response.data;
-            _this.user = response.data;
-            console.log(response.data);
-            deferred.resolve(response.data);
-          }
+        function(response) {
+          user = response.data;
+          _this.user = response.data;
+          console.log(response.data);
+          deferred.resolve(response.data);
+        }
       ).catch(function(response){
           deferred.reject(response.data.message);
           $log.error('from service', response);
@@ -64,14 +64,14 @@
     this.logout = function() {
       var deferred = $q.defer();
       $http.get(endpoints.auth + '/user/logout').then(
-          function(response) {
-              $log.info(response.data);
-                              user = undefined;
-              deferred.resolve(response.data);
-          }
+        function(response) {
+          $log.info(response.data);
+          user = undefined;
+          deferred.resolve(response.data);
+        }
       ).catch(function(response){
-          deferred.reject(response.data.message);
-          $log.error('from service', response);
+        deferred.reject(response.data.message);
+        $log.error('from service', response);
       });
       return deferred.promise;
     };
@@ -87,9 +87,9 @@
         .success(function(data){
           defer.resolve(data);
         })
-      .error(function(data){
-        defer.reject(data)
-      })
+        .error(function(data){
+          defer.reject(data)
+        })
       return defer.promise;
     };
 
@@ -108,13 +108,13 @@
       $http.get(endpoints.net + '/get_ip')
         .success(function(data){
           _this.ip = data.ipv4;
-		  _this.intranet = true;
+		      _this.intranet = true;
           defer.resolve(data);
         })
-      .error(function(data){
-		_this.intranet = false;
-        defer.reject(data)
-      })
+        .error(function(data){
+  		    _this.intranet = false;
+          defer.reject(data)
+        })
       return defer.promise;
     };
 
@@ -124,13 +124,13 @@
       $http.get(scheme + '://ipinfo.io', {withCredentials: false})
         .success(function(data){
           _this.publicIp = data.ip;
-		  _this.internet = true;
+		      _this.internet = true;
           defer.resolve(data);
         })
-      .error(function(data){
-		_this.internet = false;
-        defer.reject(data)
-      })
+        .error(function(data){
+		      _this.internet = false;
+          defer.reject(data)
+        })
       return defer.promise;
     };
 
@@ -143,9 +143,9 @@
         .success(function(data){
           defer.resolve(data);
         })
-      .error(function(data){
-        defer.reject(data)
-      })
+        .error(function(data){
+          defer.reject(data)
+        })
       return defer.promise;
     };
 
@@ -158,9 +158,9 @@
         .success(function(data){
           defer.resolve(data);
         })
-      .error(function(data){
-        defer.reject(data)
-      })
+        .error(function(data){
+          defer.reject(data)
+        })
       return defer.promise;
     };
   }

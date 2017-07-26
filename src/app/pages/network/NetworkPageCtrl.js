@@ -15,7 +15,7 @@
   /** @ngInject */
   function NetworkPageCtrl($scope, fileReader, $filter, $uibModal, api, toastr, $timeout) {
 
-    $scope.showModal = function(modal, params={}) {
+    $scope.showModal = function(modal, params) {
       if (modal == 'registerDevice') {
         $uibModal.open({
           animation: true,

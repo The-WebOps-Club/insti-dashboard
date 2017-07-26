@@ -135,7 +135,7 @@
       return defer.promise;
     };
 
-    this.authorizeDevice= function(args){
+    this.authorizeDevice = function(args){
       var _this = this;
       var defer = $q.defer(),
           query_params = angular.toJson(args);
@@ -150,7 +150,7 @@
       return defer.promise;
     };
 
-    this.removeDevice= function(args){
+    this.removeDevice = function(args){
       var _this = this;
       var defer = $q.defer(),
           query_params = angular.toJson(args);
@@ -164,6 +164,36 @@
         })
       return defer.promise;
     };
+
+    this.approveRequest = function(args){
+      var _this = this;
+      var defer = $q.defer(),
+          query_params = angular.toJson(args);
+
+      $http.post(endpoints.net + '/approve_request', query_params)
+        .success(function(data){
+          defer.resolve(data);
+        })
+        .error(function(data){
+          defer.reject(data)
+        })
+      return defer.promise;
+    };
+
+    this.rejectRequest = function(args){
+      var _this = this;
+      var defer = $q.defer(),
+          query_params = angular.toJson(args);
+
+      $http.post(endpoints.net + '/reject_request', query_params)
+        .success(function(data){
+          defer.resolve(data);
+        })
+        .error(function(data){
+          defer.reject(data)
+        })
+      return defer.promise;
+    };        
   }
 
 })();

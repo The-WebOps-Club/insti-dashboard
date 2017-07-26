@@ -20,6 +20,7 @@
     'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
     'BlurAdmin.pages.network',
+    'BlurAdmin.pages.networkAdmin'
   ])
       .config(routeConfig);
 

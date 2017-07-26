@@ -1,8 +1,9 @@
 /**
- * @file src/app/pages/network/NetworkModalCtrl.js
+ * @file src/app/pages/network/AuthzDeviceModalCtrl.js
  * @author Shahidh K Muhammed <shahidhkmuhammed@gmail.com>
+ * @author Chinni Chaitanya <chchaitanya95@gmail.com>
  * Date: 19.06.2017
- * Last Modified: 19.06.2017
+ * Last Modified: 26.07.2017
  */
 (function () {
   'use strict';
@@ -11,15 +12,12 @@
     .controller('AuthzDeviceModalCtrl', AuthzDeviceModalCtrl);
 
   /** @ngInject */
-  function AuthzDeviceModalCtrl($scope, $uibModalInstance, api, toastr) {
-    $scope.ip = api.ip;
-    $scope.params = {};
-    $scope.params.mac_addr = 'mac-' + api.ip;
-    $scope.params.nick = 'machine-' + api.ip;
+  function AuthzDeviceModalCtrl($scope, $uibModalInstance, api, toastr, params) {
+    $scope.params = params;
     $scope.params.validity_option = '0';
-    
-    $scope.ok = function () {
-      api.authorizeDevice($scope.params).then(function(data){
+
+    $scope.authorizeDevice = function() {
+      api.authorizeDevice(params.id).then(function(data){
         $scope.data = data;
         console.log(data);
         toastr.success('Device authorized for internet access');
@@ -55,6 +53,7 @@
         text: '1 year'
       }
     ];
+
   }
 
 })();

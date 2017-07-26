@@ -24,46 +24,63 @@
       <!--<li><button type="button" class="btn btn-danger btn-with-icon"><i class="ion-nuclear"></i>Danger</button></li>-->
     </ul>
 
-    <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal()">
-      <i class="ion-android-checkmark-circle"></i>Authorize this device
+    <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal('registerDevice')">
+      <i class="ion-android-checkmark-circle"></i>Register this device
     </button>
-
-
 
     <h3 class="with-line">Authorized Devices</h3>
 
-    <div style="overflow-y:hidden;">
-	  <table class="table table-hover table-responsive" >
+    <div style="overflow-y:scroll;">
+	  <table class="table table-hover table-bordered table-responsive" >
 		<thead>
 		<tr>
-		  <th class="table-id">#</th>
-		  <th>MAC</th>
-		  <th>IP</th>
-		  <th>Nick</th>
-		  <th>Authorized at</th>
-		  <th>Valid till</th>
-		  <th>Actions</th>
+		  <th class="table-id"><b>#</b></th>
+		  <th><b>MAC</b></th>
+		  <th><b>IP</b></th>
+		  <th><b>Nick</b></th>
+		  <th><b>Status</b></th>
+		  <th><b>Authorized at</b></th>
+		  <th><b>Valid till</b></th>
+		  <th><b>Actions</b></th>
+		  <th><b>Delete device</b></th>
 		</tr>
 		</thead>
 		<tbody>
 		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
-		<tr ng-repeat="item in devices">
+		<tr ng-repeat="item in devices track by $index">
 		  <td class="table-id">{{$index+1}}</td>
-		  <td>{{item.device.mac_addr}}</td>
+		  <td>{{item.mac_addr}}</td>
 		  <td>{{item.ip}}</td>
-		  <td>{{item.device.nick}}</td>
+		  <td>{{item.nick}}</td>
+		  <td ng-if="item.status=='active'" class="text-centered">
+	  		<p ng-if="item.status=='active'" class="text-success"><b>Active</b></p>
+			</td>
+		  <td ng-if="item.status=='inactive'" class="text-centered">
+	  		<p ng-if="item.status=='inactive'" class="text-warning"><b>Inactive</b></p>
+			</td>
+		  <td ng-if="item.status=='pending'" class="text-centered">
+	  		<p ng-if="item.status=='pending'" class="text-info"><b>Pending approval</b></p>
+			</td>
 		  <td>{{item.associated_at}}</td>
 		  <td>{{item.valid_till}}</td>
 		  <td>
+			<button ng-if="item.status=='active'" type="button" class="btn btn-danger btn-xs" ng-click="revokeConnection(item.id)">
+	      <i class="ion-alert-circled"> Revoke</i>
+	    </button>
+
+			<button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
+	      <i class="ion-refresh"> Re-Authorize</i>
+	    </button>   
+
+			<i ng-if="item.status=='pending'" class="ion-minus-round"></i>
+		  </td>
+		  <td>
 		    <button type="button" class="btn btn-danger btn-xs" ng-click="removeDevice(item.id)">
-		      <i class="ion-android-close"></i>
+		      <i class="ion-trash-a"> Delete</i>
 		    </button>
 		  </td>
 		</tr>
 		</tbody>
 	  </table>
-	</div>
-
-
   </div>
 </div>

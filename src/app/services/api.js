@@ -1,8 +1,9 @@
 /**
  * @file src/app/services/api.js
  * @author Shahidh K Muhammed <shahidhkmuhammed@gmail.com>
+ * @author Chinni Chaitanya <chchaitanya95@gmail.com>
  * Date: 20.06.2017
- * Last Modified: 20.06.2017
+ * Last Modified: 26.07.2017
  */
 (function () {
   'use strict';

@@ -18,7 +18,7 @@
     this.internet = false;
     this.intranet = true;
     var user = undefined;
-    var hostname = "hasura.dashboard.iitm.ac.in";
+    var hostname = "dashboard.iitm.ac.in";
     var scheme = 'http';
     var endpoints = {
         'auth': scheme + '://auth.' + hostname,

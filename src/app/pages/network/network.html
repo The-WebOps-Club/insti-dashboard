@@ -25,10 +25,10 @@
     </ul>
 
     <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal('registerDevice', {})">
-      <i class="ion-android-checkmark-circle"></i>Register this device
+      <i class="ion-android-checkmark-circle"></i>Register device
     </button>
 
-    <h3 class="with-line">Authorized Devices</h3>
+    <h3 class="with-line">List of Registered Devices</h3>
 
     <div style="overflow-y:scroll;">
 	  <table class="table table-hover table-bordered table-responsive" >
@@ -69,7 +69,7 @@
 	    </button>
 
 			<button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
-	      <i class="ion-refresh"> Re-Authorize</i>
+	      <i class="ion-refresh"> Authorize</i>
 	    </button>   
 
 			<i ng-if="item.status=='pending'" class="ion-minus-round"></i>

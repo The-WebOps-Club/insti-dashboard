@@ -17,7 +17,7 @@
     $scope.params.validity_option = '0';
 
     $scope.authorizeDevice = function() {
-      api.authorizeDevice(params.id).then(function(data){
+      api.authorizeDevice($scope.params).then(function(data){
         $scope.data = data;
         console.log(data);
         toastr.success('Device authorized for internet access');

@@ -15,6 +15,7 @@
   function api($q, $http, $log) {
     this.user = undefined;
     this.ip = undefined;
+    this.mac = undefined;
     this.publicIp = undefined;
     this.internet = false;
     this.intranet = true;
@@ -106,16 +107,27 @@
     this.getIp = function() {
       var _this = this;
       var defer = $q.defer();
-      $http.get(endpoints.net + '/get_ip')
+      $http.get("http://api.dashboard.iitm.ac.in/v1/device/ipv4_mac")
         .success(function(data){
           _this.ip = data.ipv4;
-		      _this.intranet = true;
+          _this.mac = data.mac;
+          _this.intranet = true;
           defer.resolve(data);
         })
         .error(function(data){
-  		    _this.intranet = false;
+          _this.intranet = false;
           defer.reject(data)
         })
+      // $http.get(endpoints.net + '/get_ip')
+      //   .success(function(data){
+      //     _this.ip = data.ipv4;
+		    //   _this.intranet = true;
+      //     defer.resolve(data);
+      //   })
+      //   .error(function(data){
+  		  //   _this.intranet = false;
+      //     defer.reject(data)
+      //   })
       return defer.promise;
     };
 
@@ -140,12 +152,53 @@
       var defer = $q.defer(),
           query_params = angular.toJson(args);
 
+      // console.log(args.id);
+      if(args.validity_option == "0" || args.validity_option == "1"){
+        // console.log("Hello");
+        var data = {"validity": args.validity_option};
+        $http.post(endpoints.net + '/authorize', data)
+          .success(function(data){
+            defer.resolve(data);
+          })
+          .error(function(data){
+            defer.reject(data)
+          })
+      }
+      else{
+        // console.log("Bye");
+        var insert_data = [{
+          mac: "42323",
+          reason: "just like that",
+        }]
+        var data = {
+          type: "insert",
+          args: {
+            table: "extended_authz",
+            objects: insert_data
+          }
+        };
+        $http.post(endpoints.data + "/v1/query", data)
+        .success(function(data){
+          defer.resolve(data);
+        })
+        .error(function(data){
+          defer.reject(data)
+        })
+      }      
+      return defer.promise;
+    };
+
+    this.registerDevice = function(args){
+      var _this = this;
+      var defer = $q.defer(),
+          query_params = angular.toJson(args);
+
       var insert_data = [{
         user_id: user.hasura_id,
-        mac: query_params.mac_addr,
-        nick: query_params.nick
+        mac: _this.mac,
+        nick: args.nick
       }]
-      console.log(query_params);
+      // console.log(insert_data);
       var data = {
         type: "insert",
         args: {
@@ -153,13 +206,13 @@
           objects: insert_data
         }
       };
-      // $http.post(endpoints.data + "/v1/query", data)
-      //   .success(function(data){
-      //     defer.resolve(data);
-      //   })
-      //   .error(function(data){
-      //     defer.reject(data)
-      //   })
+      $http.post(endpoints.data + "/v1/query", data)
+        .success(function(data){
+          defer.resolve(data);
+        })
+        .error(function(data){
+          defer.reject(data)
+        })
       return defer.promise;
     };
 
@@ -174,17 +227,17 @@
         type: "delete",
         args: {
           table: "device",
-          where: {"mac": 2}
+          where: {"mac": _this.mac}
         }
       };
 
-      // $http.post(endpoints.data + "/v1/query", data)
-      //   .success(function(data){
-      //     defer.resolve(data);
-      //   })
-      //   .error(function(data){
-      //     defer.reject(data)
-      //   })
+      $http.post(endpoints.data + "/v1/query", data)
+        .success(function(data){
+          defer.resolve(data);
+        })
+        .error(function(data){
+          defer.reject(data)
+        })
       return defer.promise;
     };
 

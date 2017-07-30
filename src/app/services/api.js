@@ -140,13 +140,26 @@
       var defer = $q.defer(),
           query_params = angular.toJson(args);
 
-      $http.post(endpoints.net + '/authorize_device', query_params)
-        .success(function(data){
-          defer.resolve(data);
-        })
-        .error(function(data){
-          defer.reject(data)
-        })
+      var insert_data = [{
+        user_id: user.hasura_id,
+        mac: query_params.mac_addr,
+        nick: query_params.nick
+      }]
+      console.log(query_params);
+      var data = {
+        type: "insert",
+        args: {
+          table: "device",
+          objects: insert_data
+        }
+      };
+      // $http.post(endpoints.data + "/v1/query", data)
+      //   .success(function(data){
+      //     defer.resolve(data);
+      //   })
+      //   .error(function(data){
+      //     defer.reject(data)
+      //   })
       return defer.promise;
     };
 
@@ -155,13 +168,23 @@
       var defer = $q.defer(),
           query_params = angular.toJson(args);
 
-      $http.post(endpoints.net + '/remove_device', query_params)
-        .success(function(data){
-          defer.resolve(data);
-        })
-        .error(function(data){
-          defer.reject(data)
-        })
+      console.log(query_params);
+
+      var data = {
+        type: "delete",
+        args: {
+          table: "device",
+          where: {"mac": 2}
+        }
+      };
+
+      // $http.post(endpoints.data + "/v1/query", data)
+      //   .success(function(data){
+      //     defer.resolve(data);
+      //   })
+      //   .error(function(data){
+      //     defer.reject(data)
+      //   })
       return defer.promise;
     };
 

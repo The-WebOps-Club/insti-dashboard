@@ -20,14 +20,14 @@
     $scope.params.validity_option = '0';
     
     $scope.registerDevice = function() {
-      // api.authorizeDevice($scope.params).then(function(data){
-      //   $scope.data = data;
-      //   console.log(data);
-      //   toastr.success('Device authorized for internet access');
-      // }).catch(function(error){
-      //   toastr.error(error, 'Authorization failed, delete the device and try again');
-      // });
-      toastr.error('API to register device not there!');
+      api.authorizeDevice($scope.params).then(function(data){
+        $scope.data = data;
+        console.log(data);
+        toastr.success('Device authorized for internet access');
+      }).catch(function(error){
+        toastr.error(error, 'Authorization failed, delete the device and try again');
+      });
+      // toastr.error('API to register device not there!');
       $uibModalInstance.close();
     };
   }

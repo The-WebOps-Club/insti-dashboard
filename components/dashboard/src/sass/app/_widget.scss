@@ -1,0 +1,25 @@
+.widget {
+  div.panel-body {
+    padding: 0;
+  }
+  ul.nav.nav-tabs {
+    border-radius: 0;
+  }
+}
+
+.fixed-elem {
+	ul.nav.nav-tabs {
+		position: absolute;
+		width: 100%;
+    z-index: 5;
+	}
+	div.tab-content {
+		padding-top: 55px;
+	}
+}
+
+div.gridster-item {
+  div.panel-heading {
+    cursor: move;
+  }
+}

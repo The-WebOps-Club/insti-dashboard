@@ -1,0 +1,180 @@
+<div style="overflow: scroll" class="side-message-navigation" ng-class="{'expanded': vm.navigationCollapsed}">
+  <div class="mail-messages-control side-message-navigation-item">
+    <div class="toggle-navigation-container">
+      <a href class="collapse-navigation-link ion-navicon"
+         ng-click="vm.navigationCollapsed=!vm.navigationCollapsed"></a>
+    </div>
+
+    <label class="checkbox-inline custom-checkbox nowrap">
+      <input type="checkbox" id="inlineCheckbox01" value="option1">
+      <span class="select-all-label">Select All</span>
+    </label>
+    
+    <button type="button" class="btn btn-icon refresh-button"><i class="ion-refresh"></i></button>
+    
+    <div class="btn-group" uib-dropdown>
+      <button type="button" class="btn more-button" uib-dropdown-toggle>
+        More <span class="caret"></span>
+      </button>
+      <ul uib-dropdown-menu>
+        <li><a href>Action</a></li>
+        <li><a href>Another action</a></li>
+        <li><a href>Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href>Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="messages chat-box">
+    <div class="menu">
+      <div class="back"><i class="fa fa-chevron-left"></i> <img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+      <div class="name">Alex</div>
+      <div class="last">18:09</div>
+    </div>
+    
+    <ol class="chat">
+      <div class="day">YESTERDAY</div>
+
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Hola!</p>
+          <p>Te vienes a cenar al centro? <emoji class="pizza"/></p>
+          <time>20:17 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Puff...</p>
+          <p>Aún estoy haciendo el contexto de Góngora... <emoji class="books"/></p>
+          <p>Mejor otro día</p>
+          <time>20:18 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Qué contexto de Góngora? <emoji class="suffocated"/></p>
+          <time>20:18 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>El que mandó Marialu</p>
+          <p>Es para mañana...</p>
+          <time>20:18 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p><emoji class="scream"/></p>
+          <p>Pásamelo! <emoji class="please"/></p>
+          <time>20:18 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <img src="http://i.imgur.com/QAROObc.jpg" draggable="false"/>
+          <time>20:19 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Gracias! <emoji class="hearth_blue"/></p>
+          <time>20:20 Hrs</time>
+        </div>
+      </li>
+      
+      <div class="day">TODAY</div>
+      
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Te apetece jugar a Minecraft?</p>
+          <time>18:03 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Venga va, hace ya mucho que no juego...</p>
+          <time>18:07 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Ehh, me crashea el Launcher... <emoji class="cryalot"/></p>
+          <time>18:08 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p><emoji class="lmao"/></p>
+          <time>18:08 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Es broma</p>
+          <p>Ataque Moai!</p>
+          <p><span><emoji class="moai"/></span><span><emoji class="moai"/></span><span><emoji class="moai"/></span><span><emoji class="moai"/></span><span><emoji class="moai"/></span><span><emoji class="moai"/></span></p>
+          <time>18:09 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Copón</p>
+          <p><emoji class="funny"/></p>
+          <time>18:08 Hrs</time>
+        </div>
+      </li>
+      <li class="self">
+        <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Hey there's a new update about this chat UI with more responsive elements! Check it now:</p>
+          <p><a href="http://codepen.io/Varo/pen/YPmwpQ" target="parent">Chat UI 2.0</a></p>
+          <time>18:09 Hrs</time>
+        </div>
+      </li>
+
+      <div class="unread-msgs">
+        <div class="unread-text">
+          UNREAD MESSAGES
+        </div>
+      </div>
+
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>Looks awesome man! <emoji class="scream"/></p>
+          <time>19:01 Hrs</time>
+        </div>
+      </li>
+      <li class="other">
+        <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+          <p>How did you even find it?</p>
+          <time>19:01 Hrs</time>
+        </div>
+      </li>
+    </ol>
+
+    <div class="input-group new-msg-group">
+      <span class="input-group-addon emojis-button">
+        <img class="responsive emojis" src="http://i.imgur.com/5WUpcPZ.png">
+      </span>
+      <input type="text" class="form-control textarea" placeholder="Type a message">
+    </div>
+
+  </div>
+</div>

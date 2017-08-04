@@ -1,0 +1,280 @@
+apiVersion: v1
+data:
+  project: |
+    {
+      "services": {
+        "postgres": {
+          "user": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "postgres.user"
+      }
+          },
+          "password": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "postgres.password"
+      }
+          },
+          "database": "hasuradb",
+          "port": "5432",
+          "volume": {
+      "name": "postgres-pv",
+      "hostPath": {
+        "path": "/data/hasura.io/postgres/"
+      }
+          }
+        },
+        "auth": {
+          "djangoSecretKey": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.secretKey"
+      }
+          },
+          "debug": "",
+          "logLevel": "WARN",
+          "saUser": "admin",
+          "saPassword": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.admin.password"
+      }
+          },
+          "saEmail": "admin@example.com",
+          "saMobile": "9988776655",
+          "loginFields": "[\"username\", \"email\", \"mobile\"]",
+          "logoutMethods": "[\"POST\"]",
+          "concurrentSessions": "true",
+          "passwordMinLength": "8",
+          "passwordResetExpiresDays": "2",
+          "allowUserAccountDelete": "yes",
+          "sessionExpireOnBrowserClose": "yes",
+          "cookieName": "dinoisses",
+          "cookieAge": "1209600",
+          "cookieServerOnly": "yes",
+          "cookiePath": "/",
+          "cookieSecure": "",
+          "recaptchaEnabled": "",
+          "recaptchaSecret": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.recaptcha.secret"
+      }
+          },
+          "emailVerificationMandatory": "",
+          "updateUserOnEmailConfirm": "yes",
+          "emailProvider": "sparkpost",
+          "emailSenderId": "admin@example.com",
+          "emailSenderName": "Example Webmaster",
+          "emailSparkpostKey": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.sparkpost.key"
+      }
+          },
+          "emailMandrillKey": "",
+          "emailAwsKey": "",
+          "emailAwsSecretKey": "",
+          "emailVerificationExpiresDays": "5",
+          "emailTemplateRegister": "Hi, Please click on http://myawesomeapp.com/%(token)s to verify your email.\n",
+          "emailTemplateVerify": "Hi, Please click on http://myawesomeapp.com/%(token)s to verify your email.\n",
+          "emailTemplateForgotPass": "Hi %(name)s, <br/>click on http://myawesomeapp.com/resetpassword/%(token)s to reset your password.\n",
+          "emailTemplateWelcomeNew": "",
+          "emailTemplateEmailChanged": "",
+          "emailTemplateMobileChanged": "",
+          "mobileVerificationMandatory": "",
+          "smsProvider": "msg91",
+          "mobileVerificationExpiresMins": "15",
+          "mobileMsg91Key": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.msg91.key"
+      }
+          },
+          "mobileSenderName": "MyAwesomeApp",
+          "mobileTemplateRegister": "Welcome to MyAwesomeApp %(name)s! Your OTP is %(otp)s.\n",
+          "mobileTemplateVerify": "Hi %(name)s. Verify your phone for your MyAwesomeApp account. Your OTP is %(otp)s.\n",
+          "mobileTemplateWelcomeNew": "",
+          "mobileTemplateEmailChanged": "",
+          "allowOTPLogin": "",
+          "allowOTPSignup": "",
+          "googleClientId": "",
+          "googleClientSecret": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.google.client_secret"
+      }
+          },
+          "googleScopes": "",
+          "googleRedirectUri": "",
+          "facebookClientId": "",
+          "facebookClientSecret": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.facebook.client_secret"
+      }
+          },
+          "facebookScopes": "",
+          "facebookRedirectUri": "",
+          "githubClientId": "",
+          "githubClientSecret": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.github.client_secret"
+      }
+          },
+          "githubScopes": "",
+          "githubRedirectUri": "",
+          "linkedInClientId": "",
+          "linkedInClientSecret": {
+      "secretKeyRef": {
+        "name": "hasura-project-secrets",
+        "key": "auth.linkedin.client_secret"
+      }
+          },
+          "linkedInScopes": "",
+          "linkedInRedirectUri": ""
+        },
+        "filestore": {
+          "hookUrl": null,
+          "volume": {
+      "name": "filestore-pv",
+      "hostPath": {
+        "path": "/data/hasura.io/filestore/"
+      }
+          }
+        }
+      },
+      "ssh": {
+        "authorizedKeys": {
+          "secretKeyRef": {
+      "name": "hasura-project-secrets",
+      "key": "ssh.authorizedKeys"
+          }
+        }
+      },
+      "gateway": {
+        "service": {
+          "type": "ClusterIP",
+          "externalIPs": ["10.24.4.9"],
+          "ports": [
+      {
+        "name": "http",
+        "port": 80,
+        "protocol": "TCP",
+        "targetPort": 80
+      },
+      {
+        "name": "https",
+        "port": 443,
+        "protocol": "TCP",
+        "targetPort": 443
+      },
+      {
+        "name": "ssh",
+        "port": 22,
+        "protocol": "TCP",
+        "targetPort": 22
+      }
+          ]
+        },
+        "httpDirectives": [
+          "limit_rate 4000k;"
+        ],
+        "domains": {
+          "vcap.me": {
+      "ssl": null
+          }
+        },
+        "httpRoutes": {
+          "data": {
+      "/": {
+        "upstreamService": {
+          "namespace": "hasura",
+          "name": "data"
+        },
+        "upstreamServicePort": 80,
+        "upstreamServicePath": "/",
+        "enableCORS": true,
+        "enableAuth": true,
+        "enableWebsockets": true
+      }
+          },
+          "auth": {
+      "/": {
+        "upstreamService": {
+          "namespace": "hasura",
+          "name": "auth"
+        },
+        "upstreamServicePort": 80,
+        "upstreamServicePath": "/",
+        "enableCORS": true,
+        "enableAuth": true,
+        "enableWebsockets": true
+      }
+          },
+          "k8s": {
+      "/": {
+        "upstreamService": {
+          "namespace": "hasura",
+          "name": "k8s"
+        },
+        "upstreamServicePort": 80,
+        "upstreamServicePath": "/",
+        "enableCORS": true,
+        "enableAuth": true,
+        "enableWebsockets": true,
+        "restrictToRoles": [
+          "admin"
+        ],
+        "locationDirectives": [
+          "limit_rate 4000k;"
+        ]
+      }
+          },
+          "console": {
+      "/": {
+        "upstreamService": {
+          "namespace": "hasura",
+          "name": "console"
+        },
+        "upstreamServicePort": 80,
+        "upstreamServicePath": "/",
+        "enableCORS": true,
+        "enableAuth": true,
+        "enableWebsockets": true
+      }
+          },
+          "filestore": {
+      "/": {
+        "upstreamService": {
+          "namespace": "hasura",
+          "name": "filestore"
+        },
+        "upstreamServicePort": 80,
+        "upstreamServicePath": "/",
+        "enableCORS": true,
+        "enableAuth": true,
+        "enableWebsockets": true
+      }
+          }
+        }
+      },
+      "continuousIntegration": {
+        "remotes": {
+          "website": {
+            "default.www": {
+              "www": {
+                "path": ".",
+                "dockerfile": "./Dockerfile"
+              }
+            }
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  name: hasura-project-conf
+  namespace: default

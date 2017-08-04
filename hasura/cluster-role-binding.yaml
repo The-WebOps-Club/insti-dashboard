@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: hasura-admin 
+subjects:
+- kind: User 
+  name: system:serviceaccount:hasura:default
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin 
+  apiGroup: rbac.authorization.k8s.io

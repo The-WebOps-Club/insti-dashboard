@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: platform-sync
+  namespace: hasura
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: platform-sync
+    spec:
+      containers:
+      - name: shukra
+        image: hasuraci/shukra:v0.12.3
+        command:
+        - shukra
+        - -c
+        - /conf/controller-conf.json
+        - sync
+        volumeMounts:
+        - name: controller-conf
+          mountPath: /conf
+      volumes:
+      - name: controller-conf
+        configMap:
+          name: controller-conf

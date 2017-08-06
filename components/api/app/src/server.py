@@ -12,7 +12,7 @@ from src import app
 from flask import jsonify, abort, request
 from .exceptions import RadiusException
 from .utils import get_user, get_device, get_mac, insert_authz, delete_authz
-from .utils import get_authz, is_valid, get_ipv4
+from .utils import get_authz, is_valid, get_ipv4, dhcp_event
 from .radius import send_accounting_packet
 
 HASURA_ADMIN_TOKEN = os.environ.get('HASURA_ADMIN_TOKEN')
@@ -35,8 +35,6 @@ def hello():
 def get_ipv4_mac():
     ipv4 = request.headers.get('X-Forwarded-For', request.remote_addr)
     log.info('request for ' + ipv4)
-    log.info('x-forwarded-for ' + request.headers.get('X-Forwarded-For'))
-    log.info('remote_addr ' + request.remote_addr)
     mac = get_mac(ipv4)
     return jsonify(ipv4=ipv4, mac=mac)
 
@@ -145,21 +143,22 @@ def ensure_authorization():
     user = get_user(request)
     ipv4 = request.headers.get('X-Forwarded-For', request.remote_addr)
 
-    if ('mac' in body) and (user['role'] != 'admin') and ('token' not in body):
+    if ('mac' in body or 'ipv4' in body) and (user['role'] != 'admin') and ('token' not in body):
         return abort(401, 'only admin can authorize any mac')
 
     if ('mac' in body and user['role'] == 'admin'):
         mac = body['mac']
     elif ('token' in body and 'mac' in body):
         if body['token'] == DHCP_SERVER_TOKEN:
+            # request from DHCP server, insert IPV4 MAC
             mac = body['mac']
-            ipv4 = get_ipv4(mac)
+            ipv4 = body['ipv4']
+            dhcp_event(mac, ipv4)
         else:
             return abort(401, 'incorrect token')
     else:
         mac = get_mac(ipv4)
 
-    # insert into authz table
     try:
         authz = get_authz(mac)
         if not authz:
@@ -167,7 +166,6 @@ def ensure_authorization():
     except Exception as e:
         return abort(500, e)
 
-    print(authz)
     if is_valid(authz):
         try:
             send_accounting_packet(

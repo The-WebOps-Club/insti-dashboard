@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # File: utils.py
-# Author: Shahidh K Muhammed <shahidhkmuhammed@gmail.com>
+# Author: Shahidh K Muhammed <shahidhkmuhammed@gmail.om>
 # Date: 19.06.2017
 # Last Modified: 19.06.2017
 
@@ -80,10 +80,9 @@ def get_mac(ipv4):
         'type': 'select',
         'args': {
             'table': 'dhcp_event',
-            'columns': ['id', 'ipv4', 'mac', 'timestamp'],
+            'columns': ['ipv4', 'mac', 'timestamp'],
             'where': {
-                'ipv4': ipv4,
-                'event': 'commit'
+                'ipv4': ipv4
             },
             'order_by': '-timestamp',
             'limit': 1
@@ -94,7 +93,8 @@ def get_mac(ipv4):
     if len(data) > 0 and response.status_code == 200:
         return data[0]['mac']
     else:
-        raise HasuraDataException(data)
+        print(data)
+        return None
 
 
 def get_ipv4(mac):
@@ -102,10 +102,9 @@ def get_ipv4(mac):
         'type': 'select',
         'args': {
             'table': 'dhcp_event',
-            'columns': ['id', 'ipv4', 'mac', 'timestamp'],
+            'columns': ['ipv4', 'mac', 'timestamp'],
             'where': {
-                'mac': mac,
-                'event': 'commit'
+                'mac': mac
             },
             'order_by': '-timestamp',
             'limit': 1
@@ -217,3 +216,46 @@ def is_valid(authz):
     return dt.datetime.strptime(
         ''.join(authz[0]['valid_till'].rsplit(':', 1)),
         '%Y-%m-%dT%H:%M:%S.%f%z') > dt.datetime.now(dt.timezone.utc)
+
+
+def dhcp_event(mac, ipv4):
+    payload = {
+        "type": "update",
+        "args": {
+            "table": "dhcp_event",
+            "where": {
+                "mac": mac
+            },
+            "$set": {
+                "ipv4": ipv4
+            },
+            "returning": ['mac', 'ipv4']
+        }
+    }
+    response = requests.post(HASURA_DATA_URL, json=payload, headers=headers)
+    data = response.json()
+    print(data)
+    if response.status_code == 200:
+        return data
+    else:
+        payload = {
+            "type": "insert",
+            "args": {
+                "table": "dhcp_event",
+                "objects": [
+                    {
+                        "mac": mac,
+                        "ipv4": ipv4
+                    }
+                ],
+                "returning": ['mac', 'ipv4']
+            }
+        }
+        response = requests.post(
+            HASURA_DATA_URL, json=payload, headers=headers)
+        data = response.json()
+        print(data)
+        if response.status_code == 200:
+            return data
+        else:
+            raise HasuraDataException(data)

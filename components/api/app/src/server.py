@@ -6,6 +6,8 @@
 # Last Modified: 18.06.2017
 
 import os
+import logging
+import sys
 from src import app
 from flask import jsonify, abort, request
 from .exceptions import RadiusException
@@ -16,6 +18,13 @@ from .radius import send_accounting_packet
 HASURA_ADMIN_TOKEN = os.environ.get('HASURA_ADMIN_TOKEN')
 DHCP_SERVER_TOKEN = os.environ.get('DHCP_SERVER_TOKEN')
 
+log = logging.getLogger(__name__)
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+out_hdlr.setLevel(logging.INFO)
+log.addHandler(out_hdlr)
+log.setLevel(logging.INFO)
+
 
 @app.route('/')
 def hello():
@@ -25,6 +34,7 @@ def hello():
 @app.route('/v1/device/ipv4_mac', methods=['GET', 'OPTIONS'])
 def get_ipv4_mac():
     ipv4 = request.headers.get('X-Forwarded-For', request.remote_addr)
+    log.info('request for ' + ipv4)
     mac = get_mac(ipv4)
     return jsonify(ipv4=ipv4, mac=mac)
 
@@ -125,6 +135,7 @@ def ensure_authorization():
     POST JSON body:
     {
         mac: admin only
+        ip: admin only
         token: DHCP_SERVER_TOKEN
     }
     """

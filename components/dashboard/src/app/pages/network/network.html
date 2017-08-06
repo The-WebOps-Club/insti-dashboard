@@ -39,42 +39,37 @@
 		  <th><b>IP</b></th>
 		  <th><b>Nick</b></th>
 		  <th><b>Status</b></th>
+		  <th><b>Registered at</b></th>
 		  <th><b>Authorized at</b></th>
 		  <th><b>Valid till</b></th>
 		  <th><b>Actions</b></th>
-		  <th><b>Delete device</b></th>
 		</tr>
 		</thead>
 		<tbody>
 		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
 		<tr ng-repeat="item in devices track by $index">
 		  <td class="table-id">{{$index+1}}</td>
-		  <td>{{item.mac_addr}}</td>
-		  <td>{{item.ip}}</td>
+		  <td>{{item.mac}}</td>
+		  <td>{{item.ipv4}}</td>
 		  <td>{{item.nick}}</td>
-		  <td ng-if="item.status=='active'" class="text-centered">
+      <td>
 	  		<p ng-if="item.status=='active'" class="text-success"><b>Active</b></p>
-			</td>
-		  <td ng-if="item.status=='inactive'" class="text-centered">
 	  		<p ng-if="item.status=='inactive'" class="text-warning"><b>Inactive</b></p>
-			</td>
-		  <td ng-if="item.status=='pending'" class="text-centered">
 	  		<p ng-if="item.status=='pending'" class="text-info"><b>Pending approval</b></p>
-			</td>
-		  <td>{{item.associated_at}}</td>
-		  <td>{{item.valid_till}}</td>
+      </td>
+		  <td>{{item.registered_at_moment}}</td>
+		  <td>{{item.authorized_at_moment}}</td>
+		  <td>{{item.valid_till_moment}}</td>
 		  <td>
 			<button ng-if="item.status=='active'" type="button" class="btn btn-danger btn-xs" ng-click="revokeConnection(item.id)">
 	      <i class="ion-alert-circled"> Revoke</i>
-	    </button>
+        </button>
 
-			<button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
-	      <i class="ion-refresh"> Authorize</i>
-	    </button>   
+        <button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
+          <i class="ion-refresh"> Authorize</i>
+        </button>
 
-			<i ng-if="item.status=='pending'" class="ion-minus-round"></i>
-		  </td>
-		  <td>
+        <i ng-if="item.status=='pending'" class="ion-minus-round"></i>
 		    <button type="button" class="btn btn-danger btn-xs" ng-click="removeDevice(item.id)">
 		      <i class="ion-trash-a"> Delete</i>
 		    </button>

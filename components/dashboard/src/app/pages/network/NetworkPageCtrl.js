@@ -38,7 +38,7 @@
         }).result.then(function () {
           $timeout(loadDevices, 1000);
           checkInternet();
-        });        
+        });
       } else {
         // do nothing
       }
@@ -46,54 +46,35 @@
 
     var loadDevices = function loadDevices() {
       api.query('select', {
-        table: 'ipv4',
-        columns: ['id', 'ip', 'associated_at', 'valid_till', {'name':'device', 'columns':['*']}],
-        where: {device:{user:{id: api.user.hasura_id}}}
+        table: 'registered_device',
+        columns: ['ipv4', 'mac', 'user_id', 'nick', 'registered_at', 'authorized_at', 'valid_till'],
+        where: {user_id: api.user.hasura_id}
       }).then(function(data){
         console.log(data);
         $scope.devices = data;
       	var i = 0;
       	for(;i<$scope.devices.length;){
-      	  $scope.devices[i].associated_at = moment($scope.devices[i].associated_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
-      	  $scope.devices[i].valid_till = moment($scope.devices[i].valid_till).format("dddd, MMMM Do YYYY, h:mm:ss a");
+          var item = $scope.devices[i];
+          item.status = 'inactive';
+
+      	  item.registered_at_moment = moment(item.registered_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
+          var itemIsValid = item.valid_till && item.authorized_at && moment().isBefore(moment(item.valid_till));
+
+          if (itemIsValid) {
+      	    item.valid_till_moment = moment(item.valid_till).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      	    item.authorized_at_moment = moment(item.authorized_at).format("dddd, MMMM Do YYYY, h:mm:ss a");
+            if (moment(item.authorized_at).isBefore(moment(item.valid_till))) {
+              item.status = 'active';
+            }
+          }
       	  i++;
       	}
       }).catch(function(error){
         console.log(error);
         toastr.error(error, 'Error');
       });
-    }
+    };
     loadDevices();
-
-    $scope.devices = [
-      {
-        id: 'AS3dasdj3ASdasd',
-        mac_addr: 'ab:cd:ef:gh',
-        ip: '10.20.30.40',
-        nick: 'device-1',
-        status: 'active', // running
-        associated_at: '26.07.2017 14:46:14',
-        valid_till: '26.07.2017 14:46:14',
-      },
-      {
-        id: 'bashdq@SASDd',
-        mac_addr: 'az:cz:ez:gz',
-        ip: '12.22.32.42',
-        nick: 'device-2',
-        status: 'inactive', // not running
-        associated_at: '26.07.2017 14:46:14',
-        valid_till: '26.07.2017 14:46:14',
-      },
-      {
-        id: 'dacajdQEaSDAlfasd',
-        mac_addr: 'a5:c4:e3:g2',
-        ip: '14.24.34.44',
-        nick: 'device-2',
-        status: 'pending', // pending
-        associated_at: '26.07.2017 14:46:14',
-        valid_till: '26.07.2017 14:46:14',
-      }
-    ];
 
     api.getIp().then(function(data){
       $scope.ip = data.ipv4;

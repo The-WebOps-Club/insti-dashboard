@@ -20,13 +20,13 @@
     this.internet = false;
     this.intranet = true;
     var user = undefined;
-    var hostname = "dashboard.iitm.ac.in";
+    var hostname = 'dashboard.iitm.ac.in';
     var scheme = 'http';
     var endpoints = {
-      'auth': scheme + '://auth.' + hostname,
-      'data': scheme + '://data.' + hostname,
-      'net': scheme + '://api.' + hostname + ':8080'
-    }
+      auth: scheme + '://auth.' + hostname,
+      data: scheme + '://data.' + hostname,
+      net: scheme + '://api.' + hostname
+    };
 
     this.isSignedIn = function() {
       var _this = this;

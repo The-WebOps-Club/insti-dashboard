@@ -6,8 +6,8 @@ RUN apk add --no-cache make gcc g++ python git
 RUN npm install -g bower gulp http-server
 #Install deps
 RUN mkdir /app
-COPY ./package.json /app/package.json
-COPY ./bower.json /app/bower.json
+COPY package.json /app/package.json
+COPY bower.json /app/bower.json
 RUN cd /app && npm install
 RUN cd /app && bower --allow-root install
 

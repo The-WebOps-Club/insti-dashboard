@@ -1,5 +1,7 @@
 
-<div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+<div class="feed-messages-container overlay-wrapper" track-width="smallContainerWidth" min-width="360">
+
+  <div class="overlay"></div>
   <div class="announcements-message" ng-repeat="message in feed" ng-click="expandMessage(message)">
     <div class="message-icon" ng-if="message.type == 'text-message'">
       <div class="kameleon-icon with-round-bg success"><img ng-src="{{::( 'Student-3' | kameleonImg )}}"></div>

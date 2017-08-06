@@ -11,7 +11,9 @@ angular.module('BlurAdmin', [
   'xeditable',
   'ui.slimscroll',
   'ngJsTree',
-  'angular-progress-button-styles',
+  //'angular-progress-button-styles',
+  'angular-loading-bar',
+  'smart-table',
 
   'BlurAdmin.theme',
   'BlurAdmin.pages',
@@ -31,8 +33,32 @@ angular.module('BlurAdmin', [
     '$state', 'api', '$window', function($state, api, $window) {
         api.isSignedIn().then(function(data){
           console.log('Logged in', data);
+          api.userProfile().then(function(data){
+            if(data.length === 0){
+              //create profile
+              api.query('insert', {
+                table: 'user',
+                objects: [{
+                  id: api.user.hasura_id,
+                  username: api.user.username,
+                  iitm_id: api.user.username
+                }],
+                returning: ['id', 'username', 'full_name', 'email', 'mobile', 'iitm_id']
+              }).then(function(data){
+                api.profile = data.returning[0];
+              }).catch(function(error){
+                console.log(error);
+              });
+            } else {
+              api.profile = data[0];
+            }
+          }).catch(function(error){
+            console.log(error);
+          })
         }).catch(function(error){
-            $window.location.href = '/auth.html';
+          console.log(error);
+
+          $window.location.href = '/auth.html';
         });
     }
   ]);

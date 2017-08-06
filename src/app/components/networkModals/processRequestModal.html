@@ -1,0 +1,69 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Process Request</h4>
+  </div>
+  <form name="linkForm" class="form-horizontal">
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label for="mac_addr" class="col-sm-6 control-label"><p><b>MAC address:</b></p> </label>
+        <div class="col-sm-6">
+          <p id="mac_addr" class="form-control-static">{{params.mac_addr}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ip_addr" class="col-sm-6 control-label"><p><b>IP address:</b></p> </label>
+        <div class="col-sm-6">
+          <p id="ip_addr" class="form-control-static">{{params.ip}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nick" class="col-sm-6 control-label"><p><b>Nick name for this device:</b></p> </label>
+        <div class="col-sm-6">
+          <p id="nick" class="form-control-static">{{params.nick}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reqValidity" class="col-sm-6 control-label"><p><b>Requsted validity of this authorization:</b></p> </label>
+        <div class="col-sm-6">
+          <p id="reqValidity" class="form-control-static">{{params.validity_option}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reason" class="col-sm-6 control-label"><p><b>Reason for the request:</b></p> </label>
+        <div class="col-sm-6">
+          <p id="reason" class="form-control-static">{{params.reason}}</p>
+        </div>
+      </div>
+
+      <p><u>Please note that you will be held responsible for all network activity originating from this device for the specified time period.</u></p>
+      <!--
+      <p><b>By approving the machine, you confirm that you have read and understood the terms of the Acceptable Use Policy of the IIT Madras Computer Centre with regard to use of Computing and Network resources. The complete policy is available at <a href="https://web.iitm.ac.in/cc/node/216" target="_blank">Acceptable Use Policy</a>. Please read through it and understand it before you proceed.</b></p>
+      -->
+    </div>
+    <div class="modal-footer">
+      <div class="form-group">
+        
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="comment" placeholder="Your comment">
+        </div>
+        
+        <div class="col-sm-2">
+          <button type="button" class="btn btn-success" ng-click="approveRequest()">Approve</button>
+        </div>
+
+        <div class="col-sm-2">
+          <button type="button" class="btn btn-danger" ng-click="rejectRequest()">Reject</button>
+        </div>
+      
+      </div>
+    </div>
+  </form>
+</div>

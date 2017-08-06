@@ -1,0 +1,23 @@
+$blur-width: 2px;
+
+.overlay-wrapper {
+	position: relative;
+	z-index: 1;
+	-webkit-filter: blur($blur-width);
+	-moz-filter: blur($blur-width);
+	-o-filter: blur($blur-width);
+	-ms-filter: blur($blur-width);
+	filter: blur($blur-width);
+	height: 100%;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: white;
+	opacity: 0.5;
+    z-index: 100;
+	height:100% !important;
+	width: 100% !important;
+}

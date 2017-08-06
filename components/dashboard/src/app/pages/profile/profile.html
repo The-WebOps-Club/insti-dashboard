@@ -32,17 +32,17 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group row clearfix">
-          <label for="inputFirstName" class="col-sm-3 control-label">First Name</label>
+          <label for="inputFirstName" class="col-sm-3 control-label">Name</label>
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputFirstName" placeholder="" value="Anastasiya">
+            <input type="text" class="form-control" id="inputFirstName" placeholder="name" ng-model="profile.full_name">
           </div>
         </div>
         <div class="form-group row clearfix">
-          <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
+          <label for="inputIITMId" class="col-sm-3 control-label">IITM ID</label>
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputLastName" placeholder="" value="">
+            <input type="text" class="form-control" id="inputIITMId" placeholder="IITM ID" ng-model="profile.iitm_id" disabled>
           </div>
         </div>
       </div>
@@ -52,19 +52,37 @@
 
           <div class="col-sm-9">
             <select class="form-control" selectpicker>
-              <option>Web Development</option>
-              <option>System Development</option>
-              <option>Sales</option>
-              <option>Human Resources</option>
+			  <option value="" selected="selected">- Select -</option>
+			  <option value="AE">Aerospace Engineering</option>
+			  <option value="AM">Applied Mechanics</option>
+			  <option value="BT">Biotechnology</option>
+			  <option value="CE">Civil Engineering</option>
+			  <option value="CH">Chemical Engineering</option>
+			  <option value="CS">Computer Science and Engg.</option>
+			  <option value="CT">Composites Technology Centre</option>
+			  <option value="CY">Chemistry</option>
+			  <option value="ED">Engineering Design</option>
+			  <option value="EE">Electrical Engineering</option>
+			  <option value="EP">Engineering Physics</option>
+			  <option value="HS">Humanities and Social Sciences</option>
+			  <option value="MA">Mathematics</option>
+			  <option value="ME">Mechanical Engineering</option>
+			  <option value="MM">Metallurgical and Materials Engineering</option>
+			  <option value="MS">Management Studies</option>
+			  <option value="NA">Naval Architecture &amp; Ocean Engineering</option>
+			  <option value="OE">Ocean Engineering</option>
+			  <option value="PH">Physics</option>
+			  <option value="SA">SAIF</option>
             </select>
           </div>
         </div>
 
         <div class="form-group row clearfix">
-          <label for="inputOccupation" class="col-sm-3 control-label">Occupation</label>
+          <label for="inputOccupation" class="col-sm-3 control-label">Course/Position</label>
+
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputOccupation" placeholder="" value="Front End Web Developer">
+            <input type="text" class="form-control" id="inputOccupation" placeholder="course / position" ng-model="course">
           </div>
         </div>
       </div>
@@ -101,14 +119,14 @@
           <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 
           <div class="col-sm-9">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="" value="contact@akveo.com">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="email" ng-model="profile.email">
           </div>
         </div>
         <div class="form-group row clearfix">
           <label for="inputPhone" class="col-sm-3 control-label">Phone</label>
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputPhone" placeholder="" value="+1 (23) 456 7890">
+            <input type="text" class="form-control" id="inputPhone" placeholder="mobile" ng-model="profile.mobile">
           </div>
         </div>
       </div>
@@ -204,7 +222,7 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-primary btn-with-icon save-profile">
+    <button type="button" class="btn btn-primary btn-with-icon" ng-click="updateProfile()">
       <i class="ion-android-checkmark-circle"></i>Update Profile
     </button>
   </div>

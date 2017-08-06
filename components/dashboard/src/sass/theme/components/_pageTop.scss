@@ -1,3 +1,19 @@
+
+.questions-section {
+  position: absolute;
+  right: 200px;
+  top: 0;
+  height: 66px;
+  line-height: 66px;
+  color: #fff;
+  font-weight: 300;
+  a {
+    color: #d6a64f; 
+  }
+  a:visited {
+    color: #d6a64f; 
+  }
+}
 .page-top {
   background-color: $sidebar;
   position: fixed;

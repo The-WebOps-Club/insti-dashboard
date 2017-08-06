@@ -39,7 +39,7 @@
       },
       {
         id: 'fe8fcc69-1697-44e4-8f13-9acab2d1e7d9',
-        label: 'Aparna',
+        label: 'Random',
         newMessages: 1
       }
     ];

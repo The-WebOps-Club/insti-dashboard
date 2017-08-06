@@ -1,0 +1,86 @@
+<div ba-panel height="800px">
+  <div class="panel-content">
+
+    <ul class="btn-list clearfix">
+      <!--<li><button type="button" class="btn btn-primary btn-with-icon"><i class="ion-android-download"></i>Primary</button></li>-->
+      <li>
+        <div class="btn-group" role="intranet-btn">
+          <button type="button" class="btn btn-with-icon" ng-class="intranet ? 'btn-success' : 'btn-danger'">
+            <i ng-class="intranet ? 'ion-checkmark-circled' : 'ion-close-circled'"></i>Intranet
+          </button>
+          <button type="button" class="btn btn-default btn-with-icon"><i class="ion-stats-bars"></i>{{ip}}</button>
+        </div>
+      </li>
+      <li>
+        <div class="btn-group" role="internet-btn">
+          <button type="button" class="btn btn-with-icon" ng-class="internet ? 'btn-success' : 'btn-danger'">
+            <i ng-class="internet ? 'ion-checkmark-circled' : 'ion-close-circled'"></i>Internet
+          </button>
+          <button type="button" class="btn btn-default btn-with-icon"><i class="ion-stats-bars"></i>{{publicIp}}</button>
+        </div>
+      </li>
+      <!--<li><button type="button" class="btn btn-info btn-with-icon"><i class="ion-information"></i>Info</button></li>-->
+      <!--<li><button type="button" class="btn btn-warning btn-with-icon"><i class="ion-android-warning"></i>Warning</button></li>-->
+      <!--<li><button type="button" class="btn btn-danger btn-with-icon"><i class="ion-nuclear"></i>Danger</button></li>-->
+    </ul>
+
+    <button type="button" class="btn btn-primary btn-with-icon" ng-click="showModal('registerDevice', {})">
+      <i class="ion-android-checkmark-circle"></i>Register device
+    </button>
+
+    <h3 class="with-line">List of Registered Devices</h3>
+
+    <div style="overflow-y:scroll;">
+	  <table class="table table-hover table-bordered table-responsive" >
+		<thead>
+		<tr>
+		  <th class="table-id"><b>#</b></th>
+		  <th><b>MAC</b></th>
+		  <th><b>IP</b></th>
+		  <th><b>Nick</b></th>
+		  <th><b>Status</b></th>
+		  <th><b>Authorized at</b></th>
+		  <th><b>Valid till</b></th>
+		  <th><b>Actions</b></th>
+		  <th><b>Delete device</b></th>
+		</tr>
+		</thead>
+		<tbody>
+		<!--<tr ng-repeat="item in devices" style="background: #ffdfaf;">-->
+		<tr ng-repeat="item in devices track by $index">
+		  <td class="table-id">{{$index+1}}</td>
+		  <td>{{item.mac_addr}}</td>
+		  <td>{{item.ip}}</td>
+		  <td>{{item.nick}}</td>
+		  <td ng-if="item.status=='active'" class="text-centered">
+	  		<p ng-if="item.status=='active'" class="text-success"><b>Active</b></p>
+			</td>
+		  <td ng-if="item.status=='inactive'" class="text-centered">
+	  		<p ng-if="item.status=='inactive'" class="text-warning"><b>Inactive</b></p>
+			</td>
+		  <td ng-if="item.status=='pending'" class="text-centered">
+	  		<p ng-if="item.status=='pending'" class="text-info"><b>Pending approval</b></p>
+			</td>
+		  <td>{{item.associated_at}}</td>
+		  <td>{{item.valid_till}}</td>
+		  <td>
+			<button ng-if="item.status=='active'" type="button" class="btn btn-danger btn-xs" ng-click="revokeConnection(item.id)">
+	      <i class="ion-alert-circled"> Revoke</i>
+	    </button>
+
+			<button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
+	      <i class="ion-refresh"> Authorize</i>
+	    </button>   
+
+			<i ng-if="item.status=='pending'" class="ion-minus-round"></i>
+		  </td>
+		  <td>
+		    <button type="button" class="btn btn-danger btn-xs" ng-click="removeDevice(item.id)">
+		      <i class="ion-trash-a"> Delete</i>
+		    </button>
+		  </td>
+		</tr>
+		</tbody>
+	  </table>
+  </div>
+</div>

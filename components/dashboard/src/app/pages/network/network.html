@@ -65,7 +65,7 @@
 	      <i class="ion-alert-circled"> Revoke</i>
         </button>
 
-        <button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {id:item.id, mac_addr:item.mac_addr, nick:item.nick})">
+        <button ng-if="item.status=='inactive'" type="button" class="btn btn-info btn-xs" ng-click="showModal('authorizeDevice', {mac:item.mac, nick:item.nick})">
           <i class="ion-refresh"> Authorize</i>
         </button>
 

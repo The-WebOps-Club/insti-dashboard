@@ -15,10 +15,10 @@
   function RegisterDeviceModalCtrl($scope, $uibModalInstance, api, toastr) {
     $scope.ip = api.ip;
     $scope.params = {};
-    $scope.params.mac_addr = 'mac-' + api.mac;
-    $scope.params.nick = 'machine-';
+    $scope.params.mac = api.mac;
+    $scope.params.nick = 'my machine';
     $scope.params.validity_option = '0';
-    
+
     $scope.registerDevice = function() {
       api.registerDevice($scope.params).then(function(data){
         $scope.data = data;

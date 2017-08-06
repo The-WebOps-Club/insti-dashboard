@@ -143,17 +143,19 @@ def ensure_authorization():
     user = get_user(request)
     ipv4 = request.headers.get('X-Forwarded-For', request.remote_addr)
 
-    if ('mac' in body or 'ipv4' in body) and (user['role'] != 'admin') and ('token' not in body):
+    if ('mac' in body) and (user['role'] != 'admin') and ('token' not in body):
         return abort(401, 'only admin can authorize any mac')
 
     if ('mac' in body and user['role'] == 'admin'):
         mac = body['mac']
-    elif ('token' in body and 'mac' in body):
+    elif ('token' in body and 'mac' in body and 'ipv4' in body):
         if body['token'] == DHCP_SERVER_TOKEN:
             # request from DHCP server, insert IPV4 MAC
             mac = body['mac']
             ipv4 = body['ipv4']
-            dhcp_event(mac, ipv4)
+            data = dhcp_event(mac, ipv4)
+            print('update data for ' + mac + ' ' + ipv4)
+            print(data)
         else:
             return abort(401, 'incorrect token')
     else:

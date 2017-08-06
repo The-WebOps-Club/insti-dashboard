@@ -220,15 +220,15 @@ def is_valid(authz):
 
 def dhcp_event(mac, ipv4):
     payload = {
-        "type": "update",
+        "type": "insert",
         "args": {
             "table": "dhcp_event",
-            "where": {
-                "mac": mac
-            },
-            "$set": {
-                "ipv4": ipv4
-            },
+            "objects": [
+                {
+                    "mac": mac,
+                    "ipv4": ipv4
+                }
+            ],
             "returning": ['mac', 'ipv4']
         }
     }
@@ -239,15 +239,15 @@ def dhcp_event(mac, ipv4):
         return data
     else:
         payload = {
-            "type": "insert",
+            "type": "update",
             "args": {
                 "table": "dhcp_event",
-                "objects": [
-                    {
-                        "mac": mac,
-                        "ipv4": ipv4
-                    }
-                ],
+                "where": {
+                    "mac": mac
+                },
+                "$set": {
+                    "ipv4": ipv4
+                },
                 "returning": ['mac', 'ipv4']
             }
         }

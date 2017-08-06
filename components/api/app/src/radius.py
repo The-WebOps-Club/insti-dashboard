@@ -36,7 +36,7 @@ def send_accounting_packet(
     srv = Client(
         server=SERVER,
         secret=SECRET.encode(),
-        dict=Dictionary("dictionary")
+        dict=Dictionary("src/dictionary")
     )
 
     req = srv.CreateAcctPacket(User_Name=username)

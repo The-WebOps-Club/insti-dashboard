@@ -35,6 +35,8 @@ def hello():
 def get_ipv4_mac():
     ipv4 = request.headers.get('X-Forwarded-For', request.remote_addr)
     log.info('request for ' + ipv4)
+    log.info('x-forwarded-for ' + request.headers.get('X-Forwarded-For'))
+    log.info('remote_addr ' + request.remote_addr)
     mac = get_mac(ipv4)
     return jsonify(ipv4=ipv4, mac=mac)
 
